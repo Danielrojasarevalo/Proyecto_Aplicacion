@@ -1,0 +1,142 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General */
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container Principal */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Parte Izquierda */
+.left-side {
+    flex: 1;
+    background:linear-gradient(rgba(0,0,0,0.274), rgba(0, 0, 0, 0.274)), url("/static/image/login.png") no-repeat center center; 
+    background-size: cover;
+    color: white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nombre Empresa */
+.company-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Contenido Bienvenida */
+.welcome-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.welcome-content h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.welcome-content h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.welcome-content ul {
+    list-style: none;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.welcome-content li {
+    margin-bottom: 10px;
+}
+
+/* Parte Derecha */
+.right-side {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* Sección de recuperación */
+.recovery-section {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.recovery-section h2 {
+    color: #1f531f;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.recovery-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 2px solid #1f531f;
+    border-radius: 25px;
+    padding: 10px 15px;
+}
+
+.input-group i {
+    margin-right: 10px;
+    color: #1f531f;
+    font-size: 18px;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+}
+
+.instructions {
+    font-size: 12px;
+    color: #555;
+    margin-top: -10px;
+}
+
+/* Botón enviar */
+.send-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #1f531f;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-btn:hover {
+    background-color: #0f3e0f;
+}

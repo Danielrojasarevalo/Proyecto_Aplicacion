@@ -1,0 +1,202 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General */
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor Principal */
+.contenedor {
+    display: flex;
+    height: 100vh;
+}
+
+/* Parte Izquierda */
+.lado-izquierdo {
+    flex: 1;
+    background:linear-gradient(rgba(0,0,0,0.274), rgba(0, 0, 0, 0.274)), url("/static/image/login.png") no-repeat center center;       background-size: cover;
+    color: white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nombre Empresa */
+.nombre-empresa {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Contenido Bienvenida */
+.contenido-bienvenida {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contenido-bienvenida h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.contenido-bienvenida h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.contenido-bienvenida ul {
+    list-style: none;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.contenido-bienvenida li {
+    margin-bottom: 10px;
+}
+
+/* Parte Derecha */
+.lado-derecho {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* Icono de usuario */
+.icono-usuario {
+    margin-bottom: 20px;
+}
+
+.usuario-icono {
+    width: 80px;
+    height: 80px;
+}
+
+/* Sección de registro */
+.seccion-registro {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.seccion-registro h2 {
+    color: #1f531f;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grupo-entrada {
+    display: flex;
+    gap: 10px;
+}
+
+.grupo-entrada input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #1f531f;
+    border-radius: 25px;
+    font-size: 14px;
+}
+
+.grupo-doble {
+    display: flex;
+    gap: 10px; /* Espacio entre Nombre y Apellido */
+}
+
+.grupo-doble input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #1f531f;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.grupo-doble input:first-child,
+.grupo-doble input:last-child {
+    flex: 1; /* Ambos inputs ocupan el mismo espacio */
+}
+
+
+.grupo-entrada-simple input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #1f531f;
+    border-radius: 25px;
+    font-size: 14px;
+}
+
+.grupo-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.grupo-checkbox input {
+    margin-right: 8px;
+}
+
+.boton-crear {
+    width: 100%;
+    padding: 12px;
+    background-color: #1f531f;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-crear:hover {
+    background-color: #0f3e0f;
+}
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+}
+.alert.error {
+    background-color: #ffcccc;
+    color: #d8000c;
+}
+.alert.success {
+    background-color: #ccffcc;
+    color: #4F8A10;
+}
+
+  html.loading {
+    visibility: hidden;
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+

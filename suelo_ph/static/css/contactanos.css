@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilo general para el cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+}
+
+/* Barra de navegación superior */
+.barra-navegacion-superior {
+    background-color: #1D9100; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+}
+.barra-navegacion-superior .activo {
+    background-color: #4caa1a;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+/* Logo */
+.barra-navegacion-superior .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+/* Contenedor de la barra de navegación */
+.barra-navegacion-superior .logo-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Barra de navegación (para enlaces) */
+.barra-navegacion-superior .enlaces-nav {
+    list-style: none;
+    display: flex;
+    gap: 100px;
+    justify-content: center; 
+    width: 100%; 
+    -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+    
+}
+.barra-navegacion-superior .enlaces-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.contenedor-sector {
+    position: relative;
+    width: 100%;
+    height: 300px;  /* Ajusta la altura según tus necesidades */
+    background-image:linear-gradient(rgba(0, 0, 0, 0.253), rgba(0, 0, 0, 0.24)), url("/static/image/contactanos.png");
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -40px; 
+    z-index: -1;
+}
+
+/* Estilo para el formulario de contacto */
+.formulario-contacto {
+    padding: 40px;
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Título del formulario */
+.titulo-formulario {
+    font-size: 32px;
+    text-align: center;
+    color: #1D9100;
+    margin-bottom: 20px;
+}
+
+/* Descripción */
+.descripcion-formulario {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Estilo para el formulario */
+.formulario-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para los campos del formulario */
+.campo-formulario {
+    margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas de los campos */
+.campo-formulario label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+}
+
+/* Estilo para los inputs y textarea */
+.campo-formulario input,
+.campo-formulario textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.campo-formulario textarea {
+    resize: vertical;
+}
+
+/* Estilo para la caja de autorización y checkbox */
+.autorizacion {
+    display: flex; /* Alinea los elementos en una fila */
+    align-items: center; /* Alinea verticalmente el checkbox con el texto */
+    gap: 10px; /* Espacio entre el checkbox y el texto */
+    font-size: 14px; /* Ajusta el tamaño del texto */
+    line-height: 1.5; /* Mejora la legibilidad del texto */
+    margin: 0; /* Asegúrate de que no haya márgenes adicionales */
+    padding: 0; /* Asegúrate de que no haya padding adicional */
+}
+
+.autorizacion a {
+    color: #1D9100;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0;
+    padding: 0; 
+}
+
+/* Sobrescribe estilos globales para el checkbox */
+.autorizacion input[type="checkbox"] {
+    all: unset; /* Elimina todos los estilos heredados */
+    display: inline-block; /* Asegura que el checkbox se muestre correctamente */
+    margin: 0; /* Elimina márgenes adicionales */
+    padding: 0; /* Elimina cualquier padding */
+    transform: scale(1.2); /* Aumenta el tamaño del checkbox si es necesario */
+    appearance: checkbox; /* Asegura que se muestre como un checkbox */
+}
+
+
+/* Estilo para el botón de enviar */
+.btn-enviar {
+    background-color: #1D9100;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-enviar:hover {
+    background-color: #177400;
+}
+
+/*-------------------------------------------------------- */
+
+
+/* Footer container (redes sociales, logo, y la sección de información) */
+.footer-container {
+    width: 100%;
+    padding: 20px;
+    position: relative; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1D9100; 
+}
+
+
+.redes-sociales {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.redes-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Logo + Nombre de la Empresa */
+.logo-nombre {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    margin: 10px; 
+    object-fit: cover; 
+    border: 2px solid #ccc; 
+}
+
+.nombre-empresa {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Información de la Empresa, Recursos y Soporte */
+.informacion-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #1D9100; 
+    width: 100%;
+    text-align: center;
+}
+
+.informacion, .recursos, .soporte {
+    width: 30%;
+}
+
+.informacion h3, .recursos h3, .soporte h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white; 
+}
+
+.informacion ul, .recursos ul, .soporte ul {
+    list-style: none;
+    padding: 0;
+}
+
+.informacion li, .recursos li, .soporte li {
+    margin-bottom: 8px;
+    color: white;
+}
+
+/* Línea separadora */
+hr {
+    margin-top: 1px;
+    border: 1px solid #ddd;
+}
+
+/* Footer */
+.footer-container {
+    width: 100%;
+    padding: 20px;
+    position: relative; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1D9100; 
+}
+
+
+.redes-sociales {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.redes-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Logo + Nombre de la Empresa */
+.logo-nombre {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    margin: 10px; 
+    object-fit: cover; 
+    border: 2px solid #ccc; 
+}
+
+.nombre-empresa {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Información de la Empresa, Recursos y Soporte */
+.informacion-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #1D9100; 
+    width: 100%;
+    text-align: center;
+}
+
+.informacion, .recursos, .soporte {
+    width: 30%;
+}
+
+.informacion h3, .recursos h3, .soporte h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white; 
+}
+
+.informacion ul, .recursos ul, .soporte ul {
+    list-style: none;
+    padding: 0;
+}
+
+.informacion li, .recursos li, .soporte li {
+    margin-bottom: 8px;
+    color: white;
+}
+
+/* Línea separadora */
+hr {
+    margin-top: 1px;
+    border: 1px solid #ddd;
+}
+
+/* Footer */
+footer {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    background-color: #0E4700;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left {
+    margin-left: 300px;
+}
+
+
+.footer-right {
+    margin-right: 370px;
+}
+
+  html.loading {
+    visibility: hidden;
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+

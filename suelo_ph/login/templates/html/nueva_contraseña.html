@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reestablecer Contraseña</title>
+    <link rel="stylesheet" href="{% static 'css/nueva_contraseña.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Parte Izquierda -->
+    <div class="left-side">
+        <div class="company-name">Nombre De La Empresa</div>
+
+        <div class="welcome-content">
+            <h3>Gusto En Tenerlos Aca</h3>
+            <h1>Bienvenidos</h1>
+            <ul>
+                <li>Diagnóstico Del PH De Tu Suelo</li>
+                <li>Recomendaciones Personalizadas</li>
+                <li>Guía Para Corregir Niveles De PH</li>
+                <li>Información Científica Y Actualizada <br> Sobre Nutrición Vegetal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Parte Derecha -->
+    <div class="right-side">
+        <div class="reset-section">
+            <h2>REESTABLECER LA CONTRASEÑA</h2>
+
+            <!-- Mostrar errores -->
+            {% if form.errors %}
+            <div class="error-list">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form class="reset-form" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="new_password1" placeholder="Introduce La Nueva Contraseña" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="new_password2" placeholder="Confirme La Nueva Contraseña" required>
+                </div>
+                <p class="instructions">
+                    Una vez realizado el cambio puede iniciar sesión sin inconvenientes...
+                </p>
+                <button type="submit" class="confirm-btn">
+                    CONFIRMAR <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

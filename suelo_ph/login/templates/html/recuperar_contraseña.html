@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="{% static 'css/recuperar_contraseña.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Parte Izquierda -->
+    <div class="left-side">
+        <div class="company-name">Nombre De La Empresa</div>
+
+        <div class="welcome-content">
+            <h3>Gusto En Tenerlos Aca</h3>
+            <h1>Bienvenidos</h1>
+            <ul>
+                <li>Diagnostico Del PH De Tu Suelo</li>
+                <li>Recomendaciones Personalizadas</li>
+                <li>Guía Para Corregir Niveles De PH</li>
+                <li>Información Científica Y Actualizada <br> Sobre Nutrición Vegetal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Parte Derecha -->
+    <div class="right-side">
+        <div class="recovery-section">
+            <h2>Te Damos La Bienvenida</h2>
+            <form class="recovery-form" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Introduce Tu Correo Electrónico" required>
+                </div>
+                <p class="instructions">
+                    Se Enviará A Su Correo Para Verificar Su Identidad. Por Favor Verifique La Bandeja De Correo No Deseado Confirmar Que Ya Verificaron La Opción. Posteriormente Nueva Contraseña.
+                </p>
+                <button type="submit" class="send-btn">Enviar</button> 
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

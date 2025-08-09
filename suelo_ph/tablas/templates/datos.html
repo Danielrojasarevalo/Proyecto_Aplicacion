@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Datos</title>
+    <link rel="stylesheet" href="{% static 'css/datos.css' %}" />
+</head>
+<body>
+
+<nav class="barra-navegacion-superior">
+    <img src="/static/image/logo_empresa.png" alt="Logo de la Empresa" class="logo" />
+    <ul class="enlaces-nav">
+        <li><a href="{% url 'historial' %}">Historial</a></li>
+        <li><a href="{% url 'datos' %}" class="activo">Datos</a></li>
+        <li><a href="{% url 'recomendaciones' %}">Sugerencias</a></li>
+    </ul>
+</nav>
+
+<div class="contenedor">
+    <h2><center>Información De Los Sensores</center></h2>
+    <h4><center>
+        En esta sección se presentan los últimos 30 registros del mes, <br />
+        con datos detallados sobre la humedad, temperatura y nivel de pH. <br />
+        Esta información es clave para el análisis y monitoreo de las condiciones ambientales del cultivo.
+    </center></h4>
+
+    <div class="tabla-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Humedad (%)</th>
+                    <th>Temperatura (°C)</th>
+                    <th>pH</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-cuerpo">
+                <tr><td colspan="4">Cargando datos...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="cerrar-sesion">
+    <a href="{% url 'login' %}">Cerrar sesión</a>
+</div>
+
+<script>
+  const fincaId = "{{ finca_id }}";  
+  const urlDatosApi = `/index/login/datos_json/?id=${fincaId}`;
+</script>
+
+<script src="{% static 'javascript/datos.js' %}"></script>
+
+</body>
+</html>

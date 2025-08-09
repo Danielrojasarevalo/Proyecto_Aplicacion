@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" class="loading">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactanos</title>
+    <link rel="stylesheet" href="{% static 'css/contactanos.css' %}">
+    </head>
+<body class="fade-in" style="opacity: 0; transition: opacity 0.6s ease;">
+
+<!-- Barra de navegación superior -->
+<nav class="barra-navegacion-superior">
+    <img src="/static/image/logo_empresa.png" alt="Logo de la Empresa" class="logo"> <!-- Imagen del logo -->
+    <ul class="enlaces-nav">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li><a class="activo" href="{% url 'contactanos' %}">Contáctanos</a></li>
+        <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+    </ul>
+</nav>
+
+<div class="contenedor-sector">
+</div>
+
+<div class="formulario-contacto scroll-animado">
+    <h2 class="titulo-formulario">Diligencia El Siguiente Formulario</h2>
+    <p class="descripcion-formulario">Tu Opinión Es Importante Para Nosotros, Diligencia El Siguiente Formulario Y Pronto Nos Comunicaremos Contigo.</p>
+    
+    <form class="formulario-info" action="{% url 'contactanos' %}" method="POST">
+        {% csrf_token %}
+        <div class="campo-formulario">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="campo-formulario">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required>
+        </div>
+
+        <div class="campo-formulario">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="campo-formulario">
+            <label for="mensaje">Escribenos Tu Mensaje, Comentario O Sugerencia Aquí</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+        </div>
+
+        <!-- Autorización y Política -->
+        <div class="campo-formulario">
+            <label class="autorizacion">
+                <input type="checkbox" id="autorizacion" name="autorizacion" required>
+                Autorizo de manera voluntaria el tratamiento de mis datos personales según la 
+                <a href="#">Autorización Adjunta</a>. Para más información, consulta nuestra 
+                <a href="#">Política De Tratamiento</a>.
+            </label>
+        </div>
+
+        <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+</div>
+
+
+
+
+<!-- Container con todos los elementos en la parte inferior -->
+<div class="footer-container">
+    <div class="footer-content">
+        <!-- Logo y Nombre de la Empresa -->
+        <div class="logo-nombre">
+            <img src="/static/image/logo_empresa.png" alt="Logo de la Empresa" class="logo">
+            <div class="nombre-empresa">Nombre De La Empresa</div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="redes-sociales">
+            <a href="#"><img src="/static/image/facebook.png" alt="Facebook" class="redes-icono"></a>
+            <a href="#"><img src="/static/image/x.png" alt="x" class="redes-icono"></a>
+            <a href="#"><img src="/static/image/instagram.png" alt="Instagram" class="redes-icono"></a>
+            <a href="#"><img src="/static/image/in.png"alt="LinkedIn" class="redes-icono"></a>
+            <a href="#"><img src="/static/image/youtube.png"alt="youtube" class="redes-icono"></a>
+        </div>
+    </div>
+
+
+    <hr>    
+    <!-- Información de la Empresa, Recursos y Soporte -->
+    <div class="informacion-footer">
+        <div class="informacion">
+            <h3>Información</h3>
+            <ul>
+                <li>Políticas y privacidad</li>
+                <li>Términos y condiciones</li>
+                <li>Testimonios de clientes</li>
+            </ul>
+        </div>
+        <div class="recursos">
+            <h3>Recursos</h3>
+            <ul>
+                <li>Guía de uso para el pH del suelo</li>
+                <li>Guía de interpretación del suelo</li>
+                <li>Blog / Artículos educativos sobre el suelo y pH</li>
+            </ul>
+        </div>
+        <div class="soporte">
+            <h3>Soporte</h3>
+            <ul>
+                <li>Soporte Técnico / FAQ</li>
+                <li>Newsletter / Suscripción a Actualizaciones</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Derechos Reservados -->
+    <footer>
+        <div class="footer-left">
+            <p>&copy; Fundación Escuela Tecnológica (FET) <br> Desarrolladores Daniel Rojas Y Santiago Losada</p>
+        </div>
+        <div class="footer-right">
+            <p>&copy; Políticas de privacidad -<br> términos Y Condiciones</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Oculta todo hasta que se cargue bien
+document.documentElement.classList.add('loading');
+
+// Mostrar página al cargar completamente
+window.addEventListener('load', () => {
+  document.documentElement.classList.remove('loading');
+  document.body.style.opacity = '1';
+});
+
+// Transición de salida al cambiar de enlace
+document.addEventListener('DOMContentLoaded', () => {
+  const contenedor = document.querySelector('.contenedor') || document.body;
+
+  document.querySelectorAll('.opciones a').forEach((enlace) => {
+    enlace.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const destino = enlace.getAttribute('href');
+      contenedor.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = destino;
+      }, 500); // Tiempo del fade-out
+    });
+  });
+});
+// Animación de scroll
+document.addEventListener("DOMContentLoaded", () => {
+    const elementosAnimados = document.querySelectorAll('.scroll-animado');
+
+    const observer = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('scroll-visible');
+        } else {
+          entrada.target.classList.remove('scroll-visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    elementosAnimados.forEach(el => observer.observe(el));
+  });
+
+</script>
+</body>
+</html>

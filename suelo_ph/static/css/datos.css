@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+
+}
+
+/*-------------------------------------------------------- */
+
+/* Barra de navegación superior */
+.barra-navegacion-superior {
+    background-color: #1D9100; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+}
+.barra-navegacion-superior .activo {
+    background-color: #4caa1a;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+/* Estilo para el botón de cerrar sesión */
+.cerrar-sesion a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 2px 12px; /* Ajusta el tamaño del botón */
+    border-radius: 25px;
+    background-color: #2C6B2F;
+    transition: background-color 0.3s;
+    display: inline-block; /* Asegura que el botón tenga un tamaño consistente */
+    text-align: center;
+}
+
+.cerrar-sesion a:hover {
+    background-color: #1f531f; /* Efecto hover */
+}
+
+
+/* Logo */
+.barra-navegacion-superior .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+/* Contenedor de la barra de navegación */
+.barra-navegacion-superior .logo-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Barra de navegación (para enlaces) */
+.barra-navegacion-superior .enlaces-nav {
+    list-style: none;
+    display: flex;
+    gap: 100px;
+    justify-content: center; 
+    width: 100%; 
+    -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+    
+}
+.barra-navegacion-superior .enlaces-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+/*-------------------------------------------------------- */
+
+/* Contenedor principal */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+    min-height: 600px; 
+    flex-grow: 1; 
+   
+}
+.contenedor h2 {
+    font-size: 24px;
+    color: #1D9100;
+}
+
+
+/* Estilo para la tabla */
+.tabla-wrapper {
+    overflow-y: auto;  
+    width: 90%;
+    max-width: 1000px;
+    height: 600px;   
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #1D9100; 
+    z-index: 1;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #0E4700;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/*-------------------------------------------------------- */
+
+
+
+/* Footer container (redes sociales, logo, y la sección de información) */
+.footer-container {
+    width: 100%;
+    padding: 20px;
+    position: relative; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1D9100; 
+}
+
+
+.redes-sociales {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.redes-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Logo + Nombre de la Empresa */
+.logo-nombre {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    margin: 10px; 
+    object-fit: cover; 
+    border: 2px solid #ccc; 
+}
+
+.nombre-empresa {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Información de la Empresa, Recursos y Soporte */
+.informacion-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #1D9100; 
+    width: 100%;
+    text-align: center;
+}
+
+.informacion, .recursos, .soporte {
+    width: 30%;
+}
+
+.informacion h3, .recursos h3, .soporte h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white; 
+}
+
+.informacion ul, .recursos ul, .soporte ul {
+    list-style: none;
+    padding: 0;
+}
+
+.informacion li, .recursos li, .soporte li {
+    margin-bottom: 8px;
+    color: white;
+}
+
+/* Línea separadora */
+hr {
+    margin-top: 1px;
+    border: 1px solid #ddd;
+}
+
+/* Footer */
+footer {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    background-color: #0E4700;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left {
+    margin-left: 300px;
+}
+
+
+.footer-right {
+    margin-right: 370px;
+}
+
+/* Estilo para el botón de cerrar sesión */
+.cerrar-sesion a {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color:#c70505;
+    color: #ddd;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index:999;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.cerrar-sesion a:hover {
+    background-color: #ec0000;
+    transform: scale(0.97);
+
+}
+.cerrar-sesion a:activate{ 
+    background-color: #961f1f; 
+    transform: scale(0.97);
+}

@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+
+}
+/* Barra de navegación superior */
+/* Barra de navegación superior */
+.barra-navegacion-superior {
+    background-color: #1D9100; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+}
+.barra-navegacion-superior .activo {
+    background-color: #4caa1a;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+/* Logo */
+.barra-navegacion-superior .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+/* Contenedor de la barra de navegación */
+.barra-navegacion-superior .logo-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Barra de navegación (para enlaces) */
+.barra-navegacion-superior .enlaces-nav {
+    list-style: none;
+    display: flex;
+    gap: 100px;
+    justify-content: center; 
+    width: 100%; 
+    -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+    
+}
+.barra-navegacion-superior .enlaces-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+/* Contenedor principal de "Nosotros" */
+.contenedor-nuestra-historia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    padding: 0;
+    text-align: center;
+}
+
+/* Contenedor de la imagen y el texto en flexbox */
+.nuestra-historia-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px; /* Limitar el ancho máximo del contenedor */
+    margin-top: 40px;
+}
+
+/* Estilo para la imagen */
+.nuestra-historia-imagen {
+    width: 70%; /* La imagen ocupará el 60% del contenedor */
+    margin-right: 20px;
+}
+
+.nuestra-historia-imagen img {
+    width: 100%;
+    height: auto; /* Ajusta la altura de la imagen proporcionalmente */
+    object-fit: cover; /* Asegura que la imagen no se deforme */
+    border-radius: 10px; /* Redondea las esquinas de la imagen */
+}
+
+/* Estilo para el bloque de texto */
+.texto-seccion {
+    width: 65%; /* El texto ocupa el 35% del contenedor */
+    color: #333;
+}
+
+.texto-seccion h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1f531f;
+    margin-bottom: 20px;
+}
+
+.texto-seccion p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Estilo para el texto adicional debajo de la imagen */
+.texto-adicional {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.texto-adicional p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+.texto-adicional .p {
+    color: #4CAF50;
+}
+
+
+/*-------------------------------------------------------- */
+
+/* Footer container (redes sociales, logo, y la sección de información) */
+.footer-container {
+    width: 100%;
+    padding: 20px;
+    position: relative; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4CAF50; 
+}
+
+
+.redes-sociales {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.redes-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Logo + Nombre de la Empresa */
+.logo-nombre {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    margin: 10px; 
+    object-fit: cover; 
+    border: 2px solid #ccc; 
+}
+
+.nombre-empresa {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Información de la Empresa, Recursos y Soporte */
+.informacion-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #4CAF50; 
+    width: 100%;
+    text-align: center;
+}
+
+.informacion, .recursos, .soporte {
+    width: 30%;
+}
+
+.informacion h3, .recursos h3, .soporte h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white; 
+}
+
+.informacion ul, .recursos ul, .soporte ul {
+    list-style: none;
+    padding: 0;
+}
+
+.informacion li, .recursos li, .soporte li {
+    margin-bottom: 8px;
+    color: white;
+}
+
+/* Línea separadora */
+hr {
+    margin-top: 1px;
+    border: 1px solid #ddd;
+}
+
+
+
+/* Footer container (redes sociales, logo, y la sección de información) */
+.footer-container {
+    width: 100%;
+    padding: 20px;
+    position: relative; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1D9100; 
+}
+
+
+.redes-sociales {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.redes-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Logo + Nombre de la Empresa */
+.logo-nombre {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    margin: 10px; 
+    object-fit: cover; 
+    border: 2px solid #ccc; 
+}
+
+.nombre-empresa {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Información de la Empresa, Recursos y Soporte */
+.informacion-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #1D9100; 
+    width: 100%;
+    text-align: center;
+}
+
+.informacion, .recursos, .soporte {
+    width: 30%;
+}
+
+.informacion h3, .recursos h3, .soporte h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white; 
+}
+
+.informacion ul, .recursos ul, .soporte ul {
+    list-style: none;
+    padding: 0;
+}
+
+.informacion li, .recursos li, .soporte li {
+    margin-bottom: 8px;
+    color: white;
+}
+
+/* Línea separadora */
+hr {
+    margin-top: 1px;
+    border: 1px solid #ddd;
+}
+
+/* Footer */
+footer {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    background-color: #0E4700;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left {
+    margin-left: 300px;
+}
+
+
+.footer-right {
+    margin-right: 370px;
+}
+
+  html.loading {
+    visibility: hidden;
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  /* Animación de scroll */
+.scroll-animado {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+img {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease;
+}
+img:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+img:hover {
+  transform: rotate(3deg);
+  transition: transform 0.3s ease;
+}
+img {
+  transform: translateY(0);
+  
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+img:hover {
+  transform: translateY(-10px); /* se desliza hacia arriba */
+  opacity: 1; /* más visible */
+}
+
+.img-efecto {
+  filter: blur(0px) brightness(0.9);
+  transform: scale(1);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.img-efecto:hover {
+  filter: blur(1px) brightness(1.1);
+  transform: scale(1.05);
+}
+

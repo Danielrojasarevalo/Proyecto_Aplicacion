@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href= "{% static 'css/login.css' %}">
+</head>
+<body class="fade-in" style="opacity: 0; transition: opacity 0.6s ease;">
+
+<div class="contenedor">
+    <!-- Parte Izquierda -->
+    <div class="lado-izquierdo">
+        <div class="nombre-empresa">Nombre De La Empresa</div>
+        <div class="contenido-bienvenida">
+            <h3>Gusto En Tenerlos Aca</h3>
+            <h1>Bienvenidos</h1>
+            <ul>
+                <li>Diagnóstico Del PH De Tu Suelo</li>
+                <li>Recomendaciones Personalizadas</li>
+                <li>Guía Para Corregir Niveles De PH</li>
+                <li>Información Científica Y Actualizada <br>Sobre Nutrición Vegetal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Parte Derecha -->
+    <div class="lado-derecho">
+        <nav class="barra-navegacion">
+            <ul class="enlaces-nav">
+                <li><a class="activo" href="{% url 'login' %}">Sesion</a></li>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+                <li><a href="{% url 'contactanos' %}">Contáctanos</a></li>
+            </ul>
+        </nav>
+        
+        <div class="seccion-login">
+            <h2>{{ title }}</h2>
+
+            <!-- Mostrar los mensajes de error o éxito -->
+            {% if messages %}
+                <div class="alert {% for message in messages %} {% if message.tags == 'error' %}alert-error{% else %}alert-success{% endif %} {% endfor %}">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Formulario de login -->
+            <form class="formulario-login" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="grupo-entrada">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+               <div class="grupo-entrada password-wrapper">
+                    <input type="password" name="password" placeholder="Contraseña" id="password" required>
+                    <button type="button" id="togglePassword" aria-label="Mostrar contraseña">🙉    </button>
+                </div>
+                <div class="opciones">
+                    <a href="{% url 'crear_contraseña' %}">Crea Cuenta</a> <!-- URL de crear cuenta -->
+                    <a href="{% url 'recuperar_contraseña' %}">¿Olvidaste Tu Contraseña?</a> <!-- URL de recuperación de contraseña -->
+                </div>
+                <button type="submit" class="btn-login">Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Enlace al panel de administración en la esquina superior derecha -->
+            <div class="admin-link">
+                <a href="/admin" target="_blank">Acceder al panel de administración</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fondo opaco detrás del modal -->
+<div id="modal-overlay" class="modal-overlay"></div>
+
+<!-- Modal para gestionar Fincas (Lista de Fincas) -->
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" id="login-modal">
+  <span class="close-btn" role="button" aria-label="Cerrar modal" tabindex="0" onclick="hideModal()">&times;</span>
+  <h2 id="modal-title">Gestionar Mis Fincas</h2>
+  <br />
+  
+  <!-- Lista con scroll -->
+  <div class="lista-fincas-container" tabindex="0" aria-label="Lista de fincas">
+    <ul id="lista-fincas" class="lista-fincas">
+      <!-- Las fincas se cargarán con JS -->
+    </ul>
+  </div>
+  
+  <!-- Botones -->
+  <div class="buttons">
+    <button type="button" class="btn-create" onclick="showFormularioFincaModal()">Crear Finca</button>
+    <button type="button" class="btn-start" onclick="modificarFinca()">Ir a Finca</button>
+  </div>
+</div>
+
+<!-- Modal para Crear Finca (Formulario) -->
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" id="crear-finca-modal">
+  <span class="close-btn" role="button" aria-label="Cerrar modal" tabindex="0" onclick="hideModal()">&times;</span>
+  <h2 id="modal-title">Crear Nueva Finca</h2>
+
+  <!-- Formulario de finca -->
+  <form id="crearFincaForm" method="post">
+    {% csrf_token %}
+    <div class="input-row">
+      <input type="text" id="nombre_finca_input" name="nombre" placeholder="Nombre de la Finca" required />
+      <input type="text" id="ubicacion_finca" name="ubicacion" placeholder="Ubicación" required />
+    </div>
+ <button type="submit" class="btn-create">Crear Finca</button>
+
+  </form>
+</div>  
+
+
+
+
+
+
+
+<script>
+  var abrir_modal_fincas_str = "{{ abrir_modal_fincas }}";
+</script>
+<script src="{% static 'javascript/login.js' %}"></script>
+
+
+</body>
+
+
+</html>
+
+

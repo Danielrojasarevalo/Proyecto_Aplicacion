@@ -1,0 +1,478 @@
+/* Restablecimiento básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General */
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor Principal */
+.contenedor {
+    display: flex;
+    height: 100vh;
+}
+
+/* Lado izquierdo */
+.lado-izquierdo {
+    flex: 1;
+    background: linear-gradient(rgba(0,0,0,0.274), rgba(0, 0, 0, 0.274)), url("/static/image/login.png") no-repeat center center;    
+    background-size: cover;
+    color: rgb(255, 244, 244);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nombre de la empresa arriba */
+.nombre-empresa {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Contenedor para centrar el contenido de bienvenida */
+.contenido-bienvenida {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center;     /* Centrar horizontalmente */
+    text-align: center;
+}
+
+.contenido-bienvenida h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.contenido-bienvenida h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.contenido-bienvenida ul {
+    list-style: none;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 0;
+}
+
+.contenido-bienvenida li {
+    margin-bottom: 10px;
+}
+
+/* Lado derecho */
+.lado-derecho {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centrar todo verticalmente */
+    padding: 50px 30px;
+    position: relative;
+}
+
+/* Barra de navegación dentro del lado derecho */
+.barra-navegacion {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    background-color: #1f531f; 
+    background-size: cover;
+}
+.activo {
+    background-color: #2d7904;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.enlaces-nav {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.enlaces-nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.enlaces-nav a:hover {
+    background-color: #0d910d;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+.elanges-nav a:active {
+    background-color: #00e000;
+    background-color: #1f531f;
+}
+
+/* Sección de login */
+.seccion-login {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 100px; /* Para dejar espacio para el navbar arriba */
+}
+
+.seccion-login h2 {
+    color: #1f531f;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grupo-entrada input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #1f531f;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.opciones {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.opciones a {
+    text-decoration: none;
+    color: #1f531f;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #1f531f;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #0f3e0f;
+}
+/* Estilos comunes para los mensajes */
+.alert {
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 25px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Estilo para el mensaje de éxito */
+.alert-success {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde oscuro */
+    border: 1px solid #c3e6cb;
+}
+
+/* Estilo para el mensaje de error */
+.alert-error {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24; /* Rojo oscuro */
+    border: 1px solid #f5c6cb;
+}
+
+/* Estilos adicionales opcionales */
+.alert p {
+    margin: 0;
+}
+
+/* Fondo opaco detrás del modal */
+#modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 900;
+}
+
+#modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal */
+.modal{
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) translateY(-20px);
+  background: white;
+  width: 600px;
+  max-width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  padding: 20px 30px 30px 30px;
+  box-sizing: border-box;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+
+/* Botón cerrar */
+.close-btn {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  color: #f04a4a;
+  cursor: pointer;
+  user-select: none;
+}
+
+.close-btn:hover {
+  color: #c12727;
+}
+
+/* Contenedor de lista de fincas con scroll */
+.lista-fincas-container {
+  border: 2px solid #2e7d11;
+  border-radius: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  background: #f9f9f9;
+}
+
+/* Lista de fincas (ul) */
+.lista-fincas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cada finca (li) */
+.lista-fincas li {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  transition: background-color 0.2s;
+}
+
+.lista-fincas li:hover,
+.lista-fincas li.selected {
+  background-color: #1f531f;
+  color: white;
+}
+
+/* Botones */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+button.btn-create {
+  background-color: #c12700;
+  padding: 10px 25px;
+  font-family: 'Georgia', serif;
+  font-weight: 900;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-create:hover {
+  background-color: #a31f00;
+}
+
+button.btn-start {
+  background-color: #1f6e0a;
+  padding: 10px 25px;
+  font-family: 'Georgia', serif;
+  font-weight: 900;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-start:hover {
+  background-color: #135700;
+}
+
+/* Estilo para el formulario de Crear Finca */
+#crear-finca-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#crear-finca-modal input[type="text"] {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #2e7d11;
+  outline: none;
+  font-weight: 600;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+
+#crear-finca-modal input[type="text"]:focus {
+  border-color: #0981ff;
+}
+
+#crear-finca-modal .input-row {
+  display: flex;
+  gap: 15px;
+}
+
+#crear-finca-modal button {
+  padding: 10px 10px;
+  background-color: #c12700;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#crear-finca-modal button:hover {
+  background-color: #a31f00;
+}
+
+/* Estilo para el enlace del administrador en la esquina inferior derecha */
+.admin-link {
+  position: absolute;
+  bottom: 10px;  /* Ajusta para colocar en la parte inferior */
+  right: 10px;  /* Ajusta para colocar en la parte derecha */
+  font-size: 14px;
+}
+
+.admin-link a {
+  text-decoration: none;
+  color: #1f6e0a; /* Color verde para el enlace */
+}
+
+.admin-link a:hover {
+  color: #c12700; /* Color al pasar el ratón */
+}
+
+/* Estilo para ver el password */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el botón */
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 12px;
+  border: 2px solid #1f531f;
+  border-radius: 25px;
+  font-weight: 700;
+  transition: border-color 0.3s ease;
+}
+  
+.password-wrapper input:focus {
+  border-color: #0981ff;
+  outline: none;
+}
+
+.password-wrapper button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #444;
+  user-select: none;
+  padding: 0;
+}
+
+/* para enfocar el input password */
+input[type="text"], input[type="password"] {
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: #24f60d;
+  box-shadow: 0 0 8px #0981ffaa;
+  outline: none;
+}
+
+/* para enfocar el input password */
+input[type="tex"], input[type="password"] {
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="tex"]:focus, input[type="password"]:focus {
+  border-color: #24f60d;
+  box-shadow: 0 0 8px #0981ffaa;
+  outline: none;
+}
+
+  html.loading {
+    visibility: hidden;
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+

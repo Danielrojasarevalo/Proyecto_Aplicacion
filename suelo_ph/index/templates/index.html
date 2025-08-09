@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" class="loading">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Página de Inicio</title>
+</head>
+<body class="fade-in" style="opacity: 0; transition: opacity 0.6s ease;">
+
+    <!-- Barra de navegación superior -->
+<nav class="barra-navegacion-superior">
+    <img src="/static/image/logo_empresa.png" alt="Logo de la Empresa" class="logo"> <!-- Imagen del logo -->
+    <ul class="enlaces-nav">
+        <li><a class="activo" href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li><a href="{% url 'contactanos' %}">Contáctanos</a></li>
+        <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+    </ul>
+    </nav>  
+
+    <!-- Contenedor de Sector Agroindustria Cafetera -->
+<div class="contenedor-sector">
+    <h1 class="titulo-sector typewriter" data-text="Sector Agroindustria Cafetera"></h1>
+    <h2 class="subtitulo-sector typewriter" data-text="Nuestro compromiso con la calidad y la sostenibilidad"></h2>
+
+</div>
+
+<!-- Contenedor principal de "Nuestros Servicios" -->
+<div class="contenedor-servicios">
+    <br>
+    <br>
+    <h2 class="titulo-servicios">Nuestros Servicios</h2>
+
+    <!-- Primer bloque con la imagen a la izquierda y el texto a la derecha -->
+    <div class="bloque-servicio scroll-animado">
+        <div class="servicio-item">
+            <img src="/static/image/fondo_servicios1.png" alt="Servicio 1">
+            
+        </div>
+        <div class="servicio-item">
+            <p>Nos enfocamos en medir y controlar el pH del suelo en la industria agroindustrial cafetera, ya que este factor es esencial para garantizar una mejor calidad y rendimiento en la producción de café. Mantener un pH adecuado en el suelo permite que las plantas absorban los nutrientes de manera más eficiente, lo que se traduce en una cosecha de café más saludable y sabrosa. Con el apoyo de tecnología avanzada en lectores de pH del suelo, buscamos optimizar el proceso de cultivo y contribuir a la producción de un café de alta calidad.</p>
+            
+        </div>
+    </div>
+
+    <!-- Segundo bloque con la imagen a la derecha y el texto a la izquierda -->
+    <div class="bloque-servicio scroll-animado">
+        <div class="servicio-item">
+            <p>Basándonos en los resultados del pH, te proporcionaremos recomendaciones personalizadas para ajustar correctamente los valores del pH del suelo mediante el uso de abonos, tal como lo detecta tu sensor. De esta forma, mejoraremos la calidad de tu tierra, optimizando tanto la producción como la calidad de tu cosecha</p>
+        
+        </div>
+        <div class="servicio-item">
+            <img src="/static/image/fondo_servicio2.png" alt="Servicio 4">
+        
+        </div>
+    </div>
+</div>
+
+<div class="contenedor-servicio scroll-animado">
+    <div class="contenido-servicio">
+        <div class="imagen-servicio">
+            <img src="/static/image/fondo_porque_cafe.png" alt="Café" />
+        </div>
+        <div class="texto-servicio">
+            <h2 class="titulo-servicio">¿Por qué el café?</h2>
+            <p>El café es clave para la economía mundial y, especialmente, para Colombia, donde es vital para el empleo y el desarrollo de miles de familias caficultoras. Además de su valor económico, el café ofrece beneficios para la salud, como propiedades antioxidantes y mejora en la concentración.</p>
+            <p>Para garantizar una producción de café sostenible y de calidad, es esencial optimizar las condiciones del suelo. El control del pH del suelo juega un papel crucial, ya que un pH adecuado mejora la absorción de nutrientes y resulta en una cosecha más saludable.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contenedor de "Por Qué Elegirnos" -->
+<div class="contenedor-por-que-elegirnos scroll-animado">
+    <div class="contenido-servicio">
+        <div class="texto-servicio">
+            <br>
+            <br>
+            <h2 class="titulo-por-que-elegirnos">¿Por qué Elegirnos?</h2>
+            <p>Somos una empresa colombiana, líder en el desarrollo e implementación de tecnologías para la optimización del cultivo de café a través de la medición y control del pH del suelo.</p>
+            <div class="beneficios">
+                <div class="beneficio">
+                    <h3><img src="/static/image/icono1.png"alt="Innovamos" class="img-icono"> Innovamos</h3>
+                    <p>Soluciones tecnológicas para la medición del pH del suelo.</p>
+                </div>
+                <div class="beneficio">
+                    <h3><img src="/static/image/icono3.png" alt="Equipo profesional" class="img-icono"> Equipo profesional</h3>
+                    <p>Contamos con equipo capacitado para brindarte las mejores recomendaciones y asesoramiento técnico en el manejo del pH del suelo.</p>
+                </div>
+                <div class="beneficio">
+                    <h3><img src="/static/image/icono4.png" alt="Tecnologías agrícolas" class="img-icono"> Tecnologías agrícolas</h3>
+                    <p>Utilizamos equipos tecnológicos agrícolas para medir el pH del suelo.</p>
+                </div>
+                <div class="beneficio">
+                    <h3><img src="/static/image/icono2.png" alt="Innovamos" class="img-icono"> Mejor calidad</h3>
+                    <p>Buscamos siempre mejorar las soluciones tecnológicas y adaptarlas a las necesidades del mercado.</p>
+                </div>
+            </div>
+        </div>
+        <div class="imagen-servicio">
+            <img src="/static/image/cafe.png" alt="Café">
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Container con todos los elementos en la parte inferior -->
+<div class="footer-container">
+    <div class="footer-content">
+        <!-- Logo y Nombre de la Empresa -->
+        <div class="logo-nombre">
+            <img src="/static/image/logo_empresa.png" alt="Logo de la Empresa" class="logo">
+            <div class="nombre-empresa">Nombre De La Empresa</div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="redes-sociales">
+            <a href="#"><img src="/static/image/facebook.png" alt="Facebook" class="redes-icono"></a>
+            <a href="#"><img src="/static/image/x.png" alt="x" class="redes-icono"></a>
+            <a href="#"><img src="/static/image/instagram.png" alt="Instagram" class="redes-icono"></a>
+            <a href="#"><img src="/static/image/in.png"alt="LinkedIn" class="redes-icono"></a>
+            <a href="#"><img src="/static/image/youtube.png"alt="youtube" class="redes-icono"></a>
+        </div>
+    </div>
+
+
+    <hr>    
+    <!-- Información de la Empresa, Recursos y Soporte -->
+    <div class="informacion-footer">
+        <div class="informacion">
+            <h3>Información</h3>
+            <ul>
+                <li>Políticas y privacidad</li>
+                <li>Términos y condiciones</li>
+                <li>Testimonios de clientes</li>
+            </ul>
+        </div>
+        <div class="recursos">
+            <h3>Recursos</h3>
+            <ul>
+                <li>Guía de uso para el pH del suelo</li>
+                <li>Guía de interpretación del suelo</li>
+                <li>Blog / Artículos educativos sobre el suelo y pH</li>
+            </ul>
+        </div>
+        <div class="soporte">
+            <h3>Soporte</h3>
+            <ul>
+                <li>Soporte Técnico / FAQ</li>
+                <li>Newsletter / Suscripción a Actualizaciones</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Derechos Reservados -->
+    <footer>
+        <div class="footer-left">
+            <p>&copy; Fundación Escuela Tecnológica (FET) <br> Desarrolladores Daniel Rojas Y Santiago Losada</p>
+        </div>
+        <div class="footer-right">
+            <p>&copy; Políticas de privacidad -<br> términos Y Condiciones</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const elementosAnimados = document.querySelectorAll('.scroll-animado');
+
+    const observer = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('scroll-visible');
+        } else {
+          entrada.target.classList.remove('scroll-visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    elementosAnimados.forEach(el => observer.observe(el));
+  });
+
+  //--------------------- Transición de entrada al cargar la página ---------------------
+
+  // Oculta todo hasta que se cargue bien
+document.documentElement.classList.add('loading');
+
+// Mostrar página al cargar completamente
+window.addEventListener('load', () => {
+  document.documentElement.classList.remove('loading');
+  document.body.style.opacity = '1';
+});
+
+// Transición de salida al cambiar de enlace
+document.addEventListener('DOMContentLoaded', () => {
+  const contenedor = document.querySelector('.contenedor') || document.body;
+
+  document.querySelectorAll('.opciones a').forEach((enlace) => {
+    enlace.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const destino = enlace.getAttribute('href');
+      contenedor.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = destino;
+      }, 500); // Tiempo del fade-out
+    });
+  });
+});
+
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".typewriter");
+
+    const writeText = (el, callback) => {
+      const text = el.dataset.text;
+      let i = 0;
+      el.classList.add("animated");
+      el.style.opacity = 1;
+
+      const interval = setInterval(() => {
+        if (i <= text.length) {
+          el.textContent = text.substring(0, i);
+          el.style.width = `${i}ch`;
+          i++;
+        } else {
+          clearInterval(interval);
+          el.style.borderRight = 'none';
+          if (callback) callback();
+        }
+      }, 70);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target);
+          const [first, second] = elements;
+          writeText(first, () => {
+            writeText(second);
+          });
+        }
+      });
+    }, {
+      threshold: 0.5,
+    });
+
+    const wrapper = document.querySelector(".contenedor-sector");
+    if (wrapper) observer.observe(wrapper);
+  });
+</script>
+
+
+
+
+</body>
+</html>

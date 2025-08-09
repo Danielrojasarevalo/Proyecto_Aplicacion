@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" class="loading">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/crear_usuario.css' %}">
+</head>
+<body class="fade-in" style="opacity: 0; transition: opacity 0.6s ease;">
+
+<div class="contenedor">
+    <!-- Parte Izquierda -->
+    <div class="lado-izquierdo">
+        <div class="nombre-empresa">Nombre De La Empresa</div>
+        <div class="contenido-bienvenida">
+            <h3>Gusto En Tenerlos Aca</h3>
+            <h1>Bienvenidos</h1>
+            <ul>
+                <li>Diagnóstico Del PH De Tu Suelo</li>
+                <li>Recomendaciones Personalizadas</li>
+                <li>Guía Para Corregir Niveles De PH</li>
+                <li>Información Científica Y Actualizada <br>Sobre Nutrición Vegetal</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Parte Derecha -->
+    <div class="lado-derecho">
+
+        <div class="icono-usuario">
+            <img src="/static/image/crear_usuario.png" alt="Usuario" class="usuario-icono">
+        </div>
+        <div class="seccion-registro">
+            <h2>{{ title }}</h2>
+
+            <!-- Mostrar los mensajes de error o éxito -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form class="formulario-registro" action="{% url 'crear_usuario' %}" method="post">
+                {% csrf_token %}
+                <div class="grupo-entrada">
+                    <input type="text" name="username" placeholder="Email" required>
+                </div>
+                <div class="grupo-doble">
+                    <input type="text" name="first_name" placeholder="Nombre" required>
+                    <input type="text" name="last_name" placeholder="Apellido" required>
+                </div>
+                <div class="grupo-entrada">
+                    <input type="email" name="email" placeholder="Repetir Email" required>
+                </div>
+                <div class="grupo-doble">
+                    <input class="contraseña1" type="password" name="password1" placeholder="Contraseña" required>
+                    <input class="contraseña2" type="password" name="password2" placeholder="Repetir Contraseña" required>
+                </div>
+                <div class="grupo-entrada">
+                    <input type="text" name="ubicacion" placeholder="Ubicación" required>
+                </div>
+                <div class="grupo-checkbox">
+                    <input type="checkbox" id="terminos" required>
+                    <label for="terminos">Acepto Todos Los Términos Y Condiciones</label>
+                </div>
+
+                <button type="submit" class="boton-crear">Crear Cuenta</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'javascript/login.js' %}"></script>
+
+</body>
+</html>
+
