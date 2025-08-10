@@ -20,6 +20,7 @@ from login import views  # Asegúrate de importar las vistas desde la app 'login
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from tablas import views as tablas_views
 
 
 
@@ -29,6 +30,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),  # Esto apunta a la vista 'login' en login/views.py
     path('index/login/', include('login.urls')),  # Incluye las URLs de la app 'login'
     path('index/login/', include('tablas.urls')), 
+    path('historial_datos_api/', tablas_views.historial_datos_api, name='historial_datos_api'),  # Esto permite que /historial_datos_api/?id=... funcione
 ]
 
 if settings.DEBUG:

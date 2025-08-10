@@ -12,9 +12,9 @@
 <nav class="barra-navegacion-superior">
     <img src="/static/image/logo_empresa.png" alt="Logo de la Empresa" class="logo" />
     <ul class="enlaces-nav">
-        <li><a href="{% url 'historial' %}">Historial</a></li>
-        <li><a href="{% url 'datos' %}" class="activo">Datos</a></li>
-        <li><a href="{% url 'recomendaciones' %}">Sugerencias</a></li>
+        <li><a href="{% url 'historial' %}?id={{ request.GET.id }}" class="{% if request.path == '/index/login/historial/' %}activo{% endif %}">Historial</a></li>
+        <li><a href="{% url 'datos' %}?id={{ request.GET.id }}" class="{% if request.path == '/index/login/datos/' %}activo{% endif %}">Datos</a></li>
+        <li><a href="{% url 'recomendaciones' %}?id={{ request.GET.id }}" class="{% if request.path == '/index/login/recomendaciones/' %}activo{% endif %}">Sugerencias</a></li>
     </ul>
 </nav>
 
@@ -48,10 +48,12 @@
 </div>
 
 <script>
-  const fincaId = "{{ finca_id }}";  
-  const urlDatosApi = `/index/login/datos_json/?id=${fincaId}`;
+  const fincaId = "{{ finca_id }}";
+  let urlDatosApi = null;
+  if (fincaId && fincaId !== 'None') {
+    urlDatosApi = `/index/login/datos_json/?id=${fincaId}`;
+  }
 </script>
-
 <script src="{% static 'javascript/datos.js' %}"></script>
 
 </body>

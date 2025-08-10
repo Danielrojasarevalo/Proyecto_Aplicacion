@@ -9,8 +9,9 @@ urlpatterns = [
 
     path('login/datos/', views.datos_view, name='datos'),
 
-    path('login/recomendaciones/', views.recomendaciones_view, name='recomendaciones'),  # Añadir esta ruta para recomendaciones
-    path('datos_json/', views.datos_json, name='datos_json'),    
+    path('login/recomendaciones/', views.recomendaciones_view,name='recomendaciones'), 
+    path('datos_json/', views.datos_json, name='datos_json'),
+    path('historial_datos/', views.historial_datos_api, name='historial_datos'),
 
 ]
 # En la app 'tablas', urls.py
