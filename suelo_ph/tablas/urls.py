@@ -10,10 +10,13 @@ urlpatterns = [
     path('login/datos/', views.datos_view, name='datos'),
 
     path('login/recomendaciones/', views.recomendaciones_view,name='recomendaciones'), 
+    path('login/recomendaciones/resultados', views.resultados_view,name='resultados'), 
+
     path('datos_json/', views.datos_json, name='datos_json'),
     path('historial_datos/', views.historial_datos_api, name='historial_datos'),
+    path('resultados_json/', views.resultados_json, name='resultados_json'),
 
+    path('resultados/', views.resultados_view, name='resultados'),
 ]
-# En la app 'tablas', urls.py
 
 

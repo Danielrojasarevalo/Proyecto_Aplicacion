@@ -1,1 +1,157 @@
-<h1>hello</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugerencias</title>
+    <link rel="stylesheet" href="{% static 'css/recomendaciones.css' %}">
+</head>
+<body>
+    <nav class="barra-navegacion-superior">
+        <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo" />
+        <ul class="enlaces-nav">
+            <li><a href="{% url 'historial' %}?id={{ request.GET.id }}" class="{% if request.path == '/index/login/historial/' %}activo{% endif %}">Historial</a></li>
+            <li><a href="{% url 'datos' %}?id={{ request.GET.id }}" class="{% if request.path == '/index/login/datos/' %}activo{% endif %}">Datos</a></li>
+            <li><a href="{% url 'recomendaciones' %}?id={{ request.GET.id }}" class="{% if request.path == '/index/login/recomendaciones/' %}activo{% endif %}">Sugerencias</a></li>
+        </ul>
+    </nav>
+
+<div class="main-content-wrapper">
+    <div class="contenedores">
+        <div class="bloque-temporada">
+            <div class="titulo-temporada">
+                Temporada <span class="icono-desplegable">▼</span>
+            </div>
+            <div id="opciones-temporada" class="opciones-temporada">
+                <button class="opcion-temporada" data-temporada="Cosecha">Cosecha</button>
+                <button class="opcion-temporada" data-temporada="Mitaca">Mitaca</button>
+                <button class="opcion-temporada" data-temporada="Florecencia">Florecencia</button>
+                <button class="opcion-temporada" data-temporada="Recuperacion">Recuperacion</button>
+            </div>
+        </div>
+
+        <div class="bloque-fechas">
+            <div class="encabezado-fechas">
+                Ingresa Las Fechas
+            </div>
+            <div class="entradas-fechas">
+                <div class="campo-fecha">
+                    <label for="fechaDesde">Fecha</label>
+                    <div class="contenedor-entrada">
+                        <input type="date" id="fechaDesde" class="entrada-fecha">
+                        <span class="icono-calendario">📅</span>
+                    </div>
+                </div>
+                <div class="campo-fecha">
+                    <div class="contenedor-entrada">
+                        <input type="date" id="fechaHasta" class="entrada-fecha">
+                        <span class="icono-calendario">📅</span>
+                    </div>
+                </div>
+            </div>
+            <button id="buscar-btn" class="boton-buscar">Buscar</button>
+        </div>
+    </div>
+
+    {% if abonos %}
+    <div class="tabla-abonos-container">
+        <h2>Abonos recomendados</h2>
+        <table class="tabla-abonos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Dosis</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for abono in abonos %}
+                <tr>
+                    <td>{{ abono.nombre }}</td>
+                    <td>{{ abono.descripcion }}</td>
+                    <td>{{ abono.dosis }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    {% if productos_recomendados %}
+    <div class="tabla-abonos-container">
+        <h2>Productos recomendados</h2>
+        <table class="tabla-abonos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prod in productos_recomendados %}
+                <tr>
+                    <td>{{ prod.nombre }}</td>
+                    <td>{{ prod.descripcion }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+
+<div class="footer-container">
+    <div class="footer-content">
+        <div class="logo-nombre">
+            <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo">
+            <div class="nombre-empresa">Nombre De La Empresa</div>
+        </div>
+        <div class="redes-sociales">
+            <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook" class="redes-icono"></a>
+            <a href="#"><img src="{% static 'image/x.png' %}" alt="Twitter" class="redes-icono"></a>
+            <a href="#"><img src="{% static 'image/instagram.png' %}" alt="Instagram" class="redes-icono"></a>
+            <a href="#"><img src="{% static 'image/in.png' %}" alt="LinkedIn" class="redes-icono"></a>
+        </div>
+    </div>
+    <hr>
+    <div class="informacion-footer">
+        <div class="informacion">
+            <h3>Información</h3>
+            <ul>
+                <li>Políticas y privacidad</li>
+                <li>Términos y condiciones</li>
+                <li>Testimonios de clientes</li>
+            </ul>
+        </div>
+        <div class="recursos">
+            <h3>Recursos</h3>
+            <ul>
+                <li>Guía de uso para el pH del suelo</li>
+                <li>Guía de interpretación del suelo</li>
+                <li>Blog / Artículos educativos sobre el suelo y pH</li>
+            </ul>
+        </div>
+        <div class="soporte">
+            <h3>Soporte</h3>
+            <ul>
+                <li>Soporte Técnico / FAQ</li>
+                <li>Newsletter / Suscripción a Actualizaciones</li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left">
+            <p>&copy; Fundación Escuela Tecnológica (FET) <br> Desarrolladores Daniel Rojas Y Santiago Losada</p>
+        </div>
+        <div class="footer-right">
+            <p>&copy; Políticas de privacidad -<br> términos Y Condiciones</p>
+        </div>
+    </footer>
+</div>
+<div class="cerrar-sesion">
+    <a href="{% url 'login' %}">Cerrar sesión</a>
+</div>
+<script src="{% static 'javascript/sugerencia.js' %}"></script>
+</body>
+</html>

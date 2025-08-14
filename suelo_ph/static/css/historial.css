@@ -73,39 +73,232 @@ body, html {
 }
 
 /* Título con barra de búsqueda */
+/* Contenedor principal de la barra de búsqueda */
 .barra-busqueda {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 10px;
+  display: flex;
+  justify-content: flex-end; /* Alinea la barra a la derecha */
 }
 
-
-
-.barra-busqueda {
-    display: flex;
-    align-items: center;
+/* Contenedor para los efectos y la animación */
+#poda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 314px;
+  height: 70px;
 }
 
-.barra-busqueda input {
-    padding: 8px;
-    margin-right: 10px;
-    border: 1px solid #1D9100;
-    border-radius: 25px;
-    font-size: 16px;
+/* Contenedor principal del input */
+#main {
+  position: relative;
+  width: 301px;
+  height: 56px;
 }
 
-.barra-busqueda button {
-    background-color: #1D9100;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
+/* Estilos del input de texto */
+.input {
+  background-color: #013220; /* Verde oscuro */
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  color: white; /* Texto blanco */
+  padding-inline: 59px;
+  font-size: 18px;
+  box-sizing: border-box;
 }
 
-.barra-busqueda button:hover {
-    background-color: #1D9100;
+.input::placeholder {
+  color: #e0e0e0; /* Placeholder gris claro */
+}
+
+.input:focus {
+  outline: none;
+}
+
+/* Icono de búsqueda */
+#search-icon {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+/* Efectos visuales de Uiverse.io */
+.glow,
+.white,
+.border,
+.darkBorderBg {
+  max-height: 70px;
+  max-width: 314px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+  border-radius: 12px;
+  filter: blur(3px);
+}
+
+.white {
+  max-height: 63px;
+  max-width: 307px;
+  border-radius: 10px;
+  filter: blur(2px);
+}
+
+.white::before {
+  content: "";
+  z-index: -2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(83deg);
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  filter: brightness(1.4);
+  background-image: conic-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    #2e8b57, /* Verde */
+    rgba(0, 0, 0, 0) 8%,
+    rgba(0, 0, 0, 0) 50%,
+    #3cb371, /* Verde medio */
+    rgba(0, 0, 0, 0) 58%
+  );
+  transition: all 2s;
+}
+
+.border {
+  max-height: 59px;
+  max-width: 303px;
+  border-radius: 11px;
+  filter: blur(0.5px);
+}
+
+.border::before {
+  content: "";
+  z-index: -2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(70deg);
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  filter: brightness(1.3);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    #013220, /* Verde oscuro */
+    #2e8b57 5%, /* Verde */
+    #013220 14%, /* Verde oscuro */
+    #013220 50%, /* Verde oscuro */
+    #3cb371 60%, /* Verde medio */
+    #013220 64% /* Verde oscuro */
+  );
+  transition: all 2s;
+}
+
+.darkBorderBg {
+  max-height: 65px;
+  max-width: 312px;
+}
+
+.darkBorderBg::before {
+  content: "";
+  z-index: -2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(82deg);
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    rgba(0, 0, 0, 0),
+    #006400, /* Verde oscuro */
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 50%,
+    #228b22, /* Verde bosque */
+    rgba(0, 0, 0, 0) 60%
+  );
+  transition: all 2s;
+}
+
+.glow {
+  overflow: hidden;
+  filter: blur(30px);
+  opacity: 0.4;
+  max-height: 130px;
+  max-width: 354px;
+}
+
+.glow::before {
+  content: "";
+  z-index: -2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(60deg);
+  position: absolute;
+  width: 999px;
+  height: 999px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    #000,
+    #2e8b57 5%, /* Verde */
+    #000 38%,
+    #000 50%,
+    #3cb371 60%, /* Verde medio */
+    #000 87%
+  );
+  transition: all 2s;
+}
+
+#poda:focus-within > .darkBorderBg::before {
+  transform: translate(-50%, -50%) rotate(442deg);
+  transition: all 4s;
+}
+#poda:focus-within > .glow::before {
+  transform: translate(-50%, -50%) rotate(420deg);
+  transition: all 4s;
+}
+#poda:focus-within > .white::before {
+  transform: translate(-50%, -50%) rotate(443deg);
+  transition: all 4s;
+}
+#poda:focus-within > .border::before {
+  transform: translate(-50%, -50%) rotate(430deg);
+  transition: all 4s;
+}
+
+#input-mask {
+  pointer-events: none;
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #013210); /* Verde oscuro */
+  top: 18px;
+  left: 70px;
+}
+
+#pink-mask {
+  pointer-events: none;
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  background: #3cb371; /* Verde medio */
+  top: 10px;
+  left: 5px;
+  filter: blur(20px);
+  opacity: 0.8;
+  transition: all 2s;
+}
+
+#main:focus-within > #input-mask {
+  display: none;
 }
 
 /* Estilo para la tabla */

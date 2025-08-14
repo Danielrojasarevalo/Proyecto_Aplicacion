@@ -1,0 +1,188 @@
+/* Estilos para el contenedor principal de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6; /* Un color de fondo suave */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Estilos para el contenedor de la tabla para centrarla */
+.table-container {
+    width: 90%; /* Ajusta el ancho para que sea responsive */
+    max-width: 1200px; /* Ancho máximo para pantallas grandes */
+    margin: 40px auto; /* Centra el contenedor horizontalmente */
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Estilos para la tabla */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left; /* Alinea el texto a la izquierda por defecto */
+}
+
+/* Estilos para el encabezado de la tabla */
+.results-table thead tr {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white;
+    font-size: 1em;
+}
+
+.results-table th, .results-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Estilos para las filas del cuerpo */
+.results-table tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9; /* Color para filas pares */
+}
+
+.results-table tbody tr:hover {
+    background-color: #f1f1f1; /* Efecto al pasar el mouse */
+}
+
+/* Alineación de datos en las columnas */
+.results-table th {
+    text-align: center;
+}
+
+.results-table td {
+    text-align: center; /* Centra los datos en las celdas */
+}
+
+/* Estilos para el mensaje de error o sin datos */
+.no-data {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2em;
+    color: #888;
+}
+
+/* Estilos para el contenedor de la sección de la temporada */
+.temporada-info {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Estilos para la fila de imagen y texto */
+.image-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos para las imágenes */
+.image-row img {
+    width: 40%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el texto */
+.image-row .text-content {
+    width: 60%;
+    padding: 0 20px;
+}
+
+.image-row h3 {
+    color: #4CAF50;
+    margin-top: 0;
+}
+
+/* Estilos para el contenedor de la sección de la temporada */
+.temporada-info {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center
+}
+
+/* Estilos para la fila de imagen y texto */
+.image-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos para las imágenes */
+.image-row img {
+    width: 40%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el texto */
+.image-row .text-content {
+    width: 60%;
+    padding: 0 20px;
+}
+
+.image-row h3 {
+    color: #4CAF50;
+    margin-top: 0;
+}
+
+/* Estilo para el botón de cerrar sesión */
+.cerrar-sesion a {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color:#c70505;
+    color: #ddd;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index:999;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.cerrar-sesion a:hover {
+    background-color: #ec0000;
+    transform: scale(0.97);
+
+}
+.cerrar-sesion a:activate{ 
+    background-color: #961f1f; 
+    transform: scale(0.97);
+}
+
+
+.promedios-verde-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.promedios-verde {
+    border-collapse: collapse;
+    background: #e8fbe8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(76,175,80,0.08);
+}
+.promedios-verde th, .promedios-verde td {
+    padding: 14px 24px;
+    text-align: center;
+}
+.promedios-verde th {
+    background: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+}
+.promedios-verde td {
+    color: #222;
+    font-size: 1.1em;
+    background: #f6fff6;
+}

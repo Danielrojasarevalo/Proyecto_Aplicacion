@@ -1,0 +1,222 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados Sugerencias</title>
+    <link rel="stylesheet" href="{% static 'css/resultados.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center;">Resultados de Sugerencias</h1>
+
+    {% if error_message %}
+        <div class="error-box" style="color: red; text-align: center;">{{ error_message }}</div>
+    {% endif %}
+
+    <h2 style="text-align: center;">
+        Datos desde <span>{{ fecha_desde }}</span> hasta <span>{{ fecha_hasta }}</span> para <span>{{ temporada }}</span>
+    </h2>
+
+    <div class="table-container">
+        {% if datos %}
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Humedad</th>
+                    <th>Temperatura</th>
+                    <th>pH</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dato in datos %}
+                <tr>
+                    <td>{{ dato.fecha }}</td>
+                    <td>{{ dato.humedad }}</td>
+                    <td>{{ dato.temperatura }}</td>
+                    <td>{{ dato.ph }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="no-data">No se encontraron datos de cultivo para el rango de fechas seleccionado.</p>
+        {% endif %}
+    </div>
+
+    <div class="table-container" style="margin-top: 40px;">
+        <h2 style="text-align: center; color: #4CAF50;">Abono recomendado</h2>
+        <div style="text-align: center; font-size: 1.3em; margin-bottom: 20px;">
+            <strong>{{ abono_recomendado }}</strong>
+
+        </div>
+        {% if abono_descripcion %}
+        <div id="desc-abono" class="descripcion-producto" style="display:none; text-align:center; background:#f6fff6; color:#222; border-radius:8px; margin:0 auto 20px auto; max-width:600px;">
+            <strong>Descripción del abono:</strong> {{ abono_descripcion }}
+        </div>
+        <script>
+        function mostrarDescripcion(id) {
+            var fila = document.getElementById(id);
+            if (fila.style.display === 'none') {
+                fila.style.display = '';
+            } else {
+                fila.style.display = 'none';
+            }
+        }
+        </script>
+        {% endif %}
+
+        {% if productos_recomendados and productos_recomendados|length > 0 %}
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prod in productos_recomendados %}
+                <tr>
+                    <td>{{ prod.nombre }}</td>
+                    <td>
+                        <button class="btn-mas-info" type="button" onclick="mostrarDescripcion('desc-{{ forloop.counter }}')">Más información</button>
+                    </td>
+                </tr>
+                <tr id="desc-{{ forloop.counter }}" class="descripcion-producto" style="display:none;">
+                    <td colspan="2" style="background:#f6fff6; color:#222; border-top:0;">
+                        <strong>Descripción:</strong> {{ prod.descripcion }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <script>
+        function mostrarDescripcion(id) {
+            var fila = document.getElementById(id);
+            if (fila.style.display === 'none') {
+                fila.style.display = '';
+            } else {
+                fila.style.display = 'none';
+            }
+        }
+        </script>
+        {% endif %}
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+        <button id="show-temporada-btn" style="
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        ">Ver Información</button>
+    </div>
+
+    <!-- DEBUG abono_descripcion: {{ abono_descripcion }} -->
+    <div id="temporada-container" style="display: none;">
+        {% if temporada_info or abono_descripcion %}
+        <div class="temporada-info">
+            {% if temporada_info %}
+                <h2 style="text-align: center; color: #4CAF50;">Información de la Temporada: {{ temporada_info.nombre }}</h2>
+                <div class="image-row">
+                    <img src="{% static 'img/cultivo.jpg' %}" alt="Imagen de cultivo">
+                    <div class="text-content">
+                        <h3>Descripción de la Temporada</h3>
+                        <p>{{ temporada_info.abonos }}</p>
+                    </div>
+                </div>
+            {% endif %}
+            {% if abono_descripcion %}
+                <div class="abono-info" style="margin-top:20px;">
+                    <h3>Descripción del Abono Recomendado</h3>
+                    <p>{{ abono_descripcion }}</p>
+                </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <p class="no-data">No se encontró información del abono.</p>
+        {% endif %}
+    </div>
+    
+
+
+    <!-- Tabla de promedios en verde -->
+    <div class="promedios-verde-container">
+        <table class="promedios-verde">
+            <thead>
+                <tr>
+                    <th>pH promedio</th>
+                    <th>Humedad promedio</th>
+                    <th>Temperatura promedio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ ph_promedio }}</td>
+                    <td>{{ humedad_promedio }}</td>
+                    <td>{{ temperatura_promedio }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+    .promedios-verde-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .promedios-verde {
+        border-collapse: collapse;
+        background: #e8fbe8;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(76,175,80,0.08);
+    }
+    .promedios-verde th, .promedios-verde td {
+        padding: 14px 24px;
+        text-align: center;
+    }
+    .promedios-verde th {
+        background: #4CAF50;
+        color: #fff;
+        font-weight: bold;
+    }
+    .promedios-verde td {
+        color: #222;
+        font-size: 1.1em;
+        background: #f6fff6;
+    }
+    </style>
+
+    <ul id="abonos-lista">
+    </ul>
+    
+    <p id="no-abonos-message" style="text-align: center; display: none;">No se encontraron abonos sugeridos para este pH.</p>
+    <div class="cerrar-sesion">
+        <a href="{% url 'login' %}">Cerrar sesión</a>
+    </div>
+    <script src="{% static 'javascript/sugerencia.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const showTemporadaBtn = document.getElementById('show-temporada-btn');
+            const temporadaContainer = document.getElementById('temporada-container');
+
+            if (showTemporadaBtn && temporadaContainer) {
+                showTemporadaBtn.addEventListener('click', function() {
+                    if (temporadaContainer.style.display === 'none') {
+                        temporadaContainer.style.display = 'block';
+                        showTemporadaBtn.textContent = 'Ocultar Información';
+                    } else {
+                        temporadaContainer.style.display = 'none';
+                        showTemporadaBtn.textContent = 'Ver Información';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

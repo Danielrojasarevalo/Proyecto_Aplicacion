@@ -1,3 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+
+}
+/*-------------------------------------------------------- */
+
+/* Barra de navegación superior */
+.barra-navegacion-superior {
+    background-color: #1D9100; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+}
+.barra-navegacion-superior .activo {
+    background-color: #4caa1a;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+/* Estilo para el botón de cerrar sesión */
+.cerrar-sesion a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 2px 12px; /* Ajusta el tamaño del botón */
+    border-radius: 25px;
+    background-color: #2C6B2F;
+    transition: background-color 0.3s;
+    display: inline-block; /* Asegura que el botón tenga un tamaño consistente */
+    text-align: center;
+}
+
+.cerrar-sesion a:hover {
+    background-color: #1f531f; /* Efecto hover */
+}
+
+
+/* Logo */
+.barra-navegacion-superior .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+/* Contenedor de la barra de navegación */
+.barra-navegacion-superior .logo-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Barra de navegación (para enlaces) */
+.barra-navegacion-superior .enlaces-nav {
+    list-style: none;
+    display: flex;
+    gap: 100px;
+    justify-content: center; 
+    width: 100%; 
+    -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+    
+}
+.barra-navegacion-superior .enlaces-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+
+/*Contenedor principal */
+ 
+.main-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.contenedores {
+    display: flex;
+    gap: 80px;
+    padding: 80px;
+    border-radius: 60px;
+}
+
+/* Estilos para el bloque de Temporada */
+.bloque-temporada {
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.titulo-temporada {
+    background-color: #2e7d32;
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.opciones-temporada {
+    display: flex;
+    flex-direction: column;
+}
+
+.opcion-temporada {
+    background-color: #c8e6c9;
+    border: none;
+    padding: 15px;
+    font-size: 1em;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.opcion-temporada:hover {
+    background-color: #a5d6a7;
+}
+
+.opcion-temporada.activo {
+    background-color: #2e7d32;
+    color: white;
+}
+
+/* Estilos para el bloque de Fechas */
+.bloque-fechas {
+    width: 350px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.encabezado-fechas {
+    background-color: #2e7d32;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.entradas-fechas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.campo-fecha label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contenedor-entrada {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.entrada-fecha {
+    border: none;
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    outline: none;
+}
+
+.icono-calendario {
+    margin-left: 10px;
+    font-size: 1.2em;
+    color: #2e7d32;
+    cursor: pointer;
+}
+
+.boton-buscar {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.boton-buscar:hover {
+    background-color: #1b5e20;
+}
+/* Fin de estilos del Contenedor principal */
+
+
+
+
+/* Footer container (redes sociales, logo, y la sección de información) */
+/* Footer container (redes sociales, logo, y la sección de información) */
+.footer-container {
+    width: 100%;
+    padding: 20px;
+    position: relative; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1D9100; 
+}
+
+
+.redes-sociales {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.redes-icono {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Logo + Nombre de la Empresa */
+.logo-nombre {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    margin: 10px; 
+    object-fit: cover; 
+    border: 2px solid #ccc; 
+}
+
+.nombre-empresa {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Información de la Empresa, Recursos y Soporte */
+.informacion-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #1D9100; 
+    width: 100%;
+    text-align: center;
+}
+
+.informacion, .recursos, .soporte {
+    width: 30%;
+}
+
+.informacion h3, .recursos h3, .soporte h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white; 
+}
+
+.informacion ul, .recursos ul, .soporte ul {
+    list-style: none;
+    padding: 0;
+}
+
+.informacion li, .recursos li, .soporte li {
+    margin-bottom: 8px;
+    color: white;
+}
+
+/* Línea separadora */
+hr {
+    margin-top: 1px;
+    border: 1px solid #ddd;
+}
+
+/* Footer */
+footer {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    background-color: #0E4700;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left {
+    margin-left: 300px;
+}
+
+
+.footer-right {
+    margin-right: 370px;
+}
+
 /* Estilo para el botón de cerrar sesión */
 .cerrar-sesion a {
     position: fixed;
@@ -22,4 +346,32 @@
 .cerrar-sesion a:activate{ 
     background-color: #961f1f; 
     transform: scale(0.97);
+}
+
+
+
+
+
+.opcion-temporada {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+.opcion-temporada:hover {
+    background-color: #e6e6e6;
+    border-color: #888;
+}
+
+.opcion-temporada.selected {
+    background-color: #4caf50; /* verde */
+    color: white;
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
 }
