@@ -116,7 +116,6 @@
         ">Ver Información</button>
     </div>
 
-    <!-- DEBUG abono_descripcion: {{ abono_descripcion }} -->
     <div id="temporada-container" style="display: none;">
         {% if temporada_info or abono_descripcion %}
         <div class="temporada-info">
@@ -163,34 +162,6 @@
             </tbody>
         </table>
     </div>
-    <style>
-    .promedios-verde-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 30px;
-    }
-    .promedios-verde {
-        border-collapse: collapse;
-        background: #e8fbe8;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(76,175,80,0.08);
-    }
-    .promedios-verde th, .promedios-verde td {
-        padding: 14px 24px;
-        text-align: center;
-    }
-    .promedios-verde th {
-        background: #4CAF50;
-        color: #fff;
-        font-weight: bold;
-    }
-    .promedios-verde td {
-        color: #222;
-        font-size: 1.1em;
-        background: #f6fff6;
-    }
-    </style>
 
     <ul id="abonos-lista">
     </ul>

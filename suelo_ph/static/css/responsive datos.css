@@ -1,0 +1,194 @@
+/* ======== Menú móvil ======== */
+.header-movil {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background: #1D9100;
+    padding: 12px 16px;
+}
+
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+.titulo-movil {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+
+.logo-movil {
+    max-height: 40px;
+}
+
+/* Menú desplegable */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: #1D9100;
+    width: 100%;
+}
+
+.mobile-menu a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center; /* enlaces centrados */
+    border: none; /* ❌ sin líneas divisorias */
+}
+
+.mobile-menu a:hover {
+    background: #148d75;
+}
+
+/* Botón cerrar sesión en móvil */
+.mobile-menu .btn-cerrar {
+    margin: 12px auto;
+    padding: 12px 20px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    transition: 0.3s;
+}
+.mobile-menu .btn-cerrar:hover {
+    background: darkred;
+}
+
+/* ======== Tabla Responsive ======== */
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto; /* permite scroll en móviles */
+}
+
+.tabla-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-wrapper th,
+.tabla-wrapper td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 768px) {
+    /* Esconde menú escritorio */
+    .barra-navegacion-superior {
+        display: none;
+    }
+
+    /* Esconde botón flotante de escritorio */
+    .cerrar-sesion {
+        display: none;
+    }
+
+    /* Activa header móvil */
+    .header-movil {
+        display: flex;
+    }
+
+    /* Footer centrado en móvil */
+    footer,
+    .footer-container,
+    .footer-content,
+    .informacion-footer {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-content {
+        gap: 10px;
+    }
+
+    .informacion-footer {
+        margin-top: 15px;
+    }
+
+}
+
+
+/* ======== Títulos y textos ======== */
+.titulo-sensores {
+    text-align: center;
+    margin: 20px 0 10px;
+    font-size: 24px;
+}
+
+.descripcion-sensores {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* ======== Tabla Responsive ======== */
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto; /* scroll horizontal en móviles */
+    margin-bottom: 20px;
+}
+
+.tabla-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px; /* evita que se deforme en móviles muy pequeños */
+}
+
+.tabla-wrapper th,
+.tabla-wrapper td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ======== Botón cerrar sesión escritorio ======== */
+.cerrar-sesion {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.cerrar-sesion a {
+    display: inline-block;
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.cerrar-sesion a:hover {
+    background: darkred;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 768px) {
+    /* Títulos más pequeños */
+    .titulo-sensores {
+        font-size: 20px;
+    }
+
+    .descripcion-sensores {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    /* Botón cerrar sesión escondido en escritorio ya lo tienes,
+       aquí aseguramos que solo se muestre en menú móvil */
+    .cerrar-sesion {
+        display: none;
+    }
+}
+

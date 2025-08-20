@@ -6,11 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial</title>
     <link rel="stylesheet" href="{% static 'css/historial.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive historial.css' %}">
+
+        
 </head>
 <body>
-    {% csrf_token %}  <!-- Token CSRF añadido aquí -->
+    {% csrf_token %}
 
+  <header class="header-movil">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <h1 class="titulo-movil">Datos Sensores</h1>
+    <img src="{% static 'image/logo_empresa.png' %}" alt="Logo" class="logo-movil">
+  </header>
+
+    <!-- Barra navegación escritorio -->
     <nav class="barra-navegacion-superior">
+            
+
         <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo" />
         <ul class="enlaces-nav">
             <li><a href="{% url 'historial' %}?id={{ request.GET.id }}" class="{% if request.path == '/index/login/historial/' %}activo{% endif %}">Historial</a></li>
@@ -19,47 +31,56 @@
         </ul>
     </nav>
 
+    <!-- Menú desplegable móvil -->
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="{% url 'historial' %}?id={{ request.GET.id }}">Historial</a>
+        <a href="{% url 'datos' %}?id={{ request.GET.id }}">Datos</a>
+        <a href="{% url 'recomendaciones' %}?id={{ request.GET.id }}">Sugerencias</a>
+        <a href="{% url 'login' %}" class="btn-cerrar">Cerrar sesión</a>
+    </div>
+
     <!-- Contenedor principal -->
     <div class="contenedor">
         <div class="titulo-barra">
             <h2>Historial De Sensores</h2>
-<div class="barra-busqueda">
-    <div id="poda">
-        <div class="glow"></div>
-        <div class="darkBorderBg"></div>
-        <div class="darkBorderBg"></div>
-        <div class="darkBorderBg"></div>
 
-        <div class="white"></div>
-        <div class="border"></div>
-
-        <div id="main">
-            <input placeholder="Busca Por Fecha" type="text" id="inputBusqueda" class="input" />
-            <div id="input-mask"></div>
-            <div id="pink-mask"></div>
-            <div id="search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" height="24" fill="none" class="feather feather-search">
-                    <circle stroke="url(#search)" r="8" cy="11" cx="11"></circle>
-                    <line stroke="url(#searchl)" y2="16.65" y1="22" x2="16.65" x1="22"></line>
-                    <defs>
-                        <linearGradient gradientTransform="rotate(50)" id="search">
-                            <stop stop-color="#f8e7f8" offset="0%"></stop>
-                            <stop stop-color="#b6a9b7" offset="50%"></stop>
-                        </linearGradient>
-                        <linearGradient id="searchl">
-                            <stop stop-color="#b6a9b7" offset="0%"></stop>
-                            <stop stop-color="#837484" offset="50%"></stop>
-                        </linearGradient>
-                    </defs>
-                </svg>
+            <!-- Barra de búsqueda -->
+            <div class="barra-busqueda">
+                <div id="poda">
+                    <div class="glow"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="darkBorderBg"></div>
+                    <div class="white"></div>
+                    <div class="border"></div>
+                    <div id="main">
+                        <input placeholder="Busca Por Fecha (YYYY-MM-DD)" type="date" id="inputBusqueda" name="fecha" class="input" />
+                        <div id="input-mask"></div>
+                        <div id="pink-mask"></div>
+                        <div id="search-icon">
+                            <button type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" height="24" fill="none" class="feather feather-search">
+                                    <circle stroke="url(#search)" r="8" cy="11" cx="11"></circle>
+                                    <line stroke="url(#searchl)" y2="16.65" y1="22" x2="16.65" x1="22"></line>
+                                    <defs>
+                                        <linearGradient gradientTransform="rotate(50)" id="search">
+                                            <stop stop-color="#f8e7f8" offset="0%"></stop>
+                                            <stop stop-color="#b6a9b7" offset="50%"></stop>
+                                        </linearGradient>
+                                        <linearGradient id="searchl">
+                                            <stop stop-color="#b6a9b7" offset="0%"></stop>
+                                            <stop stop-color="#837484" offset="50%"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
         </div>
         
         <div class="tabla-wrapper">
-            <!-- Tabla de datos (vacía, se llenará con JavaScript) -->
             <table>
                 <thead>
                     <tr>
@@ -70,9 +91,7 @@
                         <th>Dispositivo</th>
                     </tr>
                 </thead>
-
-                <tbody id="tabla-cuerpo">  <!-- ID cambiado a tabla-cuerpo -->
-                    <!-- Los datos se cargarán dinámicamente aquí -->
+                <tbody id="tabla-cuerpo">  
                     <tr>
                         <td colspan="5">Cargando datos...</td>
                     </tr>
@@ -82,69 +101,87 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer-container">
-        <div class="footer-content">
-            <!-- Logo y Nombre de la Empresa -->
-            <div class="logo-nombre">
-                <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo">
-                <div class="nombre-empresa">Nombre De La Empresa</div>
-            </div>
-
-            <!-- Redes sociales -->
-            <div class="redes-sociales">
-                <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook" class="redes-icono"></a>
-                <a href="#"><img src="{% static 'image/x.png' %}" alt="X" class="redes-icono"></a>
-                <a href="#"><img src="{% static 'image/instagram.png' %}" alt="Instagram" class="redes-icono"></a>
-                <a href="#"><img src="{% static 'image/in.png' %}" alt="LinkedIn" class="redes-icono"></a>
-                <a href="#"><img src="{% static 'image/youtube.png' %}" alt="YouTube" class="redes-icono"></a>
-            </div>
+   
+    <div class="footer-content">
+        <div class="logo-nombre">
+            <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo">
+            <div class="nombre-empresa">Nombre De La Empresa</div>
         </div>
-
-        <hr>    
-        
-        <!-- Información de la Empresa, Recursos y Soporte -->
-        <div class="informacion-footer">
-            <div class="informacion">
-                <h3>Información</h3>
-                <ul>
-                    <li>Políticas y privacidad</li>
-                    <li>Términos y condiciones</li>
-                    <li>Testimonios de clientes</li>
-                </ul>
-            </div>
-            <div class="recursos">
-                <h3>Recursos</h3>
-                <ul>
-                    <li>Guía de uso para el pH del suelo</li>
-                    <li>Guía de interpretación del suelo</li>
-                    <li>Blog / Artículos educativos sobre el suelo y pH</li>
-                </ul>
-            </div>
-            <div class="soporte">
-                <h3>Soporte</h3>
-                <ul>
-                    <li>Soporte Técnico / FAQ</li>
-                    <li>Newsletter / Suscripción a Actualizaciones</li>
-                </ul>
-            </div>
+        <div class="redes-sociales">
+            <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook" class="redes-icono"></a>
+            <a href="#"><img src="{% static 'image/x.png' %}" alt="Twitter" class="redes-icono"></a>
+            <a href="#"><img src="{% static 'image/instagram.png' %}" alt="Instagram" class="redes-icono"></a>
+           
         </div>
-
-        <!-- Derechos Reservados -->
-        <footer>
-            <div class="footer-left">
-                <p>&copy; Fundación Escuela Tecnológica (FET) <br> Desarrolladores Daniel Rojas Y Santiago Losada</p>
-            </div>
-            <div class="footer-right">
-                <p>&copy; Políticas de privacidad -<br> términos Y Condiciones</p>
-            </div>
+    </div>
+    <hr>
+    <div class="informacion-footer">
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Información <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="#">Políticas y privacidad</a></li>
+                <li><a href="#">Términos y condiciones</a></li>
+                <li><a href="#">Testimonios de clientes</a></li>
+            </ul>
+        </div>
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Recursos <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="#">Guía de uso para el pH del suelo</a></li>
+                <li><a href="#">Guía de interpretación del suelo</a></li>
+                <li><a href="#">Blog / Artículos educativos sobre el suelo y pH</a></li>
+            </ul>
+        </div>
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Soporte <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="#">Soporte Técnico / FAQ</a></li>
+                <li><a href="#">Newsletter / Suscripción a Actualizaciones</a></li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left">
+            <p>&copy; Fundación Escuela Tecnológica (FET) <br> Desarrolladores Daniel Rojas Y Santiago Losada</p>
+        </div>
+        <div class="footer-right">
+            <p>&copy; Políticas de privacidad -<br> términos Y Condiciones</p>
+        </div>
         </footer>
     </div>
 
+    <!-- Botón flotante cerrar sesión (solo escritorio) -->
     <div class="cerrar-sesion">
         <a href="{% url 'login' %}">Cerrar sesión</a>
     </div>
 
-    <!-- Incluir JavaScript -->
+    <!-- Modal -->
+    <div id="modalResultados" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Humedad(%)</th>
+                        <th>Temperatura °C</th>
+                        <th>Ph</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="humedad-modal">--</td>
+                        <td id="temperatura-modal">--</td>
+                        <td id="ph-modal">--</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="sugerencias-btn">Sugerencias</button>
+        </div>
+    </div>
+ 
+
     <script src="{% static 'javascript/historial_datos.js' %}"></script>
+    <script src="{% static 'javascript/barra_d_busqueda.js' %}"></script>
+     <script src="{% static 'javascript/responsive mobil.js' %}"></script>
 </body>
 </html>

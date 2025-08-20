@@ -17,6 +17,10 @@ urlpatterns = [
     path('resultados_json/', views.resultados_json, name='resultados_json'),
 
     path('resultados/', views.resultados_view, name='resultados'),
+
+
+    path('buscar_fecha/', views.buscar_datos_por_fecha, name='buscar_datos_por_fecha'),
+    
 ]
 
 

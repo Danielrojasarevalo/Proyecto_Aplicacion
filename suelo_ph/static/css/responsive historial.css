@@ -1,0 +1,282 @@
+/* ======== Menú móvil ======== */
+
+/* Esto asegura que los enlaces sean blancos en todo momento */
+.informacion-footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-movil {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background: #1D9100;
+    padding: 12px 16px;
+}
+
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+.titulo-movil {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+
+.logo-movil {
+    max-height: 40px;
+}
+
+/* Menú desplegable */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: #1D9100;
+    width: 100%;
+}
+
+.mobile-menu a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center; /* enlaces centrados */
+    border: none; /* ❌ sin líneas divisorias */
+}
+
+.mobile-menu a:hover {
+    background: #148d75;
+}
+
+/* Botón cerrar sesión en móvil */
+.mobile-menu .btn-cerrar {
+    margin: 12px auto;
+    padding: 12px 20px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    transition: 0.3s;
+}
+.mobile-menu .btn-cerrar:hover {
+    background: darkred;
+}
+
+/* ======== Tabla Responsive ======== */
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto; /* permite scroll en móviles */
+}
+
+.tabla-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-wrapper th,
+.tabla-wrapper td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 768px) {
+    /* Esconde menú escritorio */
+    .barra-navegacion-superior {
+        display: none;
+    }
+
+    /* Esconde botón flotante de escritorio */
+    .cerrar-sesion {
+        display: none;
+    }
+
+    /* Activa header móvil */
+    .header-movil {
+        display: flex;
+    }
+
+    /* Footer centrado en móvil */
+    footer,
+    .footer-container,
+    .footer-content,
+    .informacion-footer {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* ======== Responsive ======== */
+@media (max-width: 768px) {
+    /* Esconde menú escritorio */
+    .barra-navegacion-superior {
+        display: none;
+    }
+
+    /* Esconde botón flotante de escritorio */
+    .cerrar-sesion {
+        display: none;
+    }
+
+    /* Activa header móvil */
+    .header-movil {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ----- Estilos para el footer en móviles ----- */
+
+    /* Contenedor principal del footer */
+    .footer-container {
+        padding: 0;
+    }
+
+    /* Sección superior del footer (Logo y redes sociales) */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .logo-nombre {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .nombre-empresa {
+        margin-top: 5px;
+    }
+
+    .redes-sociales {
+        justify-content: center;
+        padding: 0;
+        margin-top: 10px;
+    }
+    
+    /* Estilos para las secciones de información, recursos y soporte (ACORDEÓN) */
+    .informacion-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        padding: 0;
+    }
+
+    .acordeon-item {
+        width: 100%;
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .acordeon-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: #1D9100;
+        color: white;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .acordeon-content {
+        display: none;
+        list-style: none;
+        padding: 10px 20px;
+        background-color: #106600;
+        overflow: hidden;
+    }
+    
+    .acordeon-content.active {
+        display: block;
+    }
+
+    .acordeon-content li {
+        padding: 5px 0;
+    }
+
+    .acordeon-content li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        transition: color 0.2s ease;
+    }
+
+    .acordeon-content li a:hover {
+        color: #c8e6c9;
+    }
+
+    .icono-acordeon {
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+    }
+
+    .acordeon-header.active .icono-acordeon {
+        transform: rotate(45deg);
+    }
+    
+    /* Estilos para la sección de copyright */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+    .footer-left, .footer-right {
+        margin: 5px 0;
+    }
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row; /* Alinea los elementos en fila */
+    justify-content: space-between; /* Espacio entre el logo/nombre y las redes */
+    align-items: center; /* Centra verticalmente */
+    padding: 15px 20px; /* Añade un poco de padding */
+}
+
+.logo-nombre {
+    display: flex;
+    flex-direction: row; /* Alinea logo y nombre en fila */
+    align-items: center;
+    margin-bottom: 0; /* Elimina el margen inferior innecesario */
+}
+
+.logo {
+    width: 40px; /* Reduce el tamaño del logo para móvil */
+    height: 40px;
+    margin-right: 10px; /* Espacio entre el logo y el nombre */
+}
+
+.nombre-empresa {
+    font-size: 16px; /* Reduce el tamaño de la fuente para móvil */
+    margin-top: 0; /* Elimina el margen superior innecesario */
+}
+
+.redes-sociales {
+    display: flex;
+    flex-direction: row; /* Alinea los iconos en fila */
+    align-items: center;
+    padding: 0;
+    margin-top: 0; /* Elimina el margen superior innecesario */
+}
+
+.redes-icono {
+    width: 30px; /* Reduce el tamaño de los iconos */
+    height: 30px;
+    margin-left: 10px; /* Espacio entre los iconos */
+}

@@ -6,8 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactanos</title>
     <link rel="stylesheet" href="{% static 'css/contactanos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive contactanos.css' %}">
     </head>
 <body class="fade-in" style="opacity: 0; transition: opacity 0.6s ease;">
+
+     <header class="header-movil">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <h1 class="titulo-movil">Pagina de Inicio</h1>
+    <img src="{% static 'image/logo_empresa.png' %}" alt="Logo" class="logo-movil">
+  </header>
+
 
 <!-- Barra de navegación superior -->
 <nav class="barra-navegacion-superior">
@@ -19,6 +27,14 @@
         <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
     </ul>
 </nav>
+
+ <div id="mobileMenu" class="mobile-menu">
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'nosotros' %}">Nosotros</a>
+        <a href="{% url 'contactanos' %}">Contáctanos</a>
+        <a href="{% url 'login' %}" class="btn-cerrar">Iniciar Sesion</a>
+    </div>
+
 
 <div class="contenedor-sector">
 </div>
@@ -69,52 +85,43 @@
 <!-- Container con todos los elementos en la parte inferior -->
 <div class="footer-container">
     <div class="footer-content">
-        <!-- Logo y Nombre de la Empresa -->
         <div class="logo-nombre">
-            <img src="/static/image/logo_empresa.png" alt="Logo de la Empresa" class="logo">
+            <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo">
             <div class="nombre-empresa">Nombre De La Empresa</div>
         </div>
-
-        <!-- Redes sociales -->
         <div class="redes-sociales">
-            <a href="#"><img src="/static/image/facebook.png" alt="Facebook" class="redes-icono"></a>
-            <a href="#"><img src="/static/image/x.png" alt="x" class="redes-icono"></a>
-            <a href="#"><img src="/static/image/instagram.png" alt="Instagram" class="redes-icono"></a>
-            <a href="#"><img src="/static/image/in.png"alt="LinkedIn" class="redes-icono"></a>
-            <a href="#"><img src="/static/image/youtube.png"alt="youtube" class="redes-icono"></a>
+            <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook" class="redes-icono"></a>
+            <a href="#"><img src="{% static 'image/x.png' %}" alt="Twitter" class="redes-icono"></a>
+            <a href="#"><img src="{% static 'image/instagram.png' %}" alt="Instagram" class="redes-icono"></a>
+           
         </div>
     </div>
-
-
-    <hr>    
-    <!-- Información de la Empresa, Recursos y Soporte -->
+    <hr>
     <div class="informacion-footer">
-        <div class="informacion">
-            <h3>Información</h3>
-            <ul>
-                <li>Políticas y privacidad</li>
-                <li>Términos y condiciones</li>
-                <li>Testimonios de clientes</li>
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Información <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="">Políticas y privacidad</a></li>
+                <li><a href="">Términos y condiciones</a></li>
+                <li><a href="">Testimonios de clientes</a></li>
             </ul>
         </div>
-        <div class="recursos">
-            <h3>Recursos</h3>
-            <ul>
-                <li>Guía de uso para el pH del suelo</li>
-                <li>Guía de interpretación del suelo</li>
-                <li>Blog / Artículos educativos sobre el suelo y pH</li>
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Recursos <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="">Guía de uso para el pH del suelo</a></li>
+                <li><a href="">Guía de interpretación del suelo</a></li>
+                <li><a href="">Blog / Artículos educativos sobre el suelo y pH</a></li>
             </ul>
         </div>
-        <div class="soporte">
-            <h3>Soporte</h3>
-            <ul>
-                <li>Soporte Técnico / FAQ</li>
-                <li>Newsletter / Suscripción a Actualizaciones</li>
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Soporte <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="">Soporte Técnico / FAQ</a></li>
+                <li><a href="">Newsletter / Suscripción a Actualizaciones</a></li>
             </ul>
         </div>
     </div>
-
-    <!-- Derechos Reservados -->
     <footer>
         <div class="footer-left">
             <p>&copy; Fundación Escuela Tecnológica (FET) <br> Desarrolladores Daniel Rojas Y Santiago Losada</p>
@@ -172,5 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 </script>
+<script src="{% static 'javascript/responsive mobil.js' %}"></script>
 </body>
 </html>

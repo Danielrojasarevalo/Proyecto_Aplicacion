@@ -1,0 +1,269 @@
+/* ======== Menú móvil ======== */
+.informacion-footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-movil {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background: #1D9100;
+    padding: 12px 16px;
+}
+
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+.titulo-movil {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+
+.logo-movil {
+    max-height: 40px;
+}
+
+/* Menú desplegable */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: #1D9100;
+    width: 100%;
+}
+
+.mobile-menu a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+}
+
+.mobile-menu a:hover {
+    background: #148d75;
+}
+
+/* Botón cerrar sesión en móvil */
+.mobile-menu .btn-cerrar {
+    margin: 12px auto;
+    padding: 12px 20px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    transition: 0.3s;
+}
+
+.mobile-menu .btn-cerrar:hover {
+    background: darkred;
+}
+
+/* ======== Responsive (Unificado) ======== */
+@media (max-width: 968px) {
+    /* Esconde menú de escritorio */
+    .barra-navegacion-superior {
+        display: none;
+    }
+
+    /* Esconde botón flotante de escritorio */
+    .cerrar-sesion {
+        display: none;
+    }
+
+    /* Activa header móvil */
+    .header-movil {
+        display: flex;
+    }
+
+    /* ----- Estilos para el footer en móviles ----- */
+    .footer-container {
+        padding: 0;
+    }
+
+   
+
+    /* Estilos para las secciones de información, recursos y soporte (ACORDEÓN) */
+    .informacion-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        padding: 0;
+    }
+
+    .acordeon-item {
+        width: 100%;
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .acordeon-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: #1D9100;
+        color: white;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .acordeon-content {
+        display: none;
+        list-style: none;
+        padding: 10px 20px;
+        background-color: #106600;
+        overflow: hidden;
+    }
+    
+    .acordeon-content.active {
+        display: block;
+    }
+
+    .acordeon-content li {
+        padding: 5px 0;
+    }
+
+    .acordeon-content li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        transition: color 0.2s ease;
+    }
+
+    .acordeon-content li a:hover {
+        color: #c8e6c9;
+    }
+
+    .icono-acordeon {
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+    }
+
+    .acordeon-header.active .icono-acordeon {
+        transform: rotate(45deg);
+    }
+    
+    /* Estilos para la sección de copyright */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+    .footer-left, .footer-right {
+        margin: 5px 0;
+    }
+
+}
+
+/* Contenedor principal de la sección "Nuestra Historia" */
+.contenedor-nuestra-historia {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Títulos y párrafos de la sección */
+.texto-seccion h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1d9100;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.texto-seccion h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1d9100;
+    margin-bottom: 20px;
+}
+
+.texto-seccion p,
+.texto-adicional p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* Contenedor Flex para la imagen y el texto */
+.nuestra-historia-flex {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+/* Estilos de la imagen y el texto dentro del flexbox */
+.nuestra-historia-imagen {
+    flex: 1;
+    max-width: 50%;
+}
+
+.nuestra-historia-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nuestra-historia-flex .texto-seccion {
+    flex: 1;
+    max-width: 50%;
+}
+
+/* Estilos para el texto adicional */
+.texto-adicional {
+    margin-top: 40px;
+    text-align: justify;
+}
+
+/* -------------------- Media Queries para Responsive Design -------------------- */
+@media (max-width: 768px) {
+    /* Ajustes para la sección principal */
+    .contenedor-nuestra-historia {
+        padding: 40px 20px;
+    }
+
+    /* Apilar la imagen y el texto en móvil */
+    .nuestra-historia-flex {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* Ajustar el ancho de los elementos a 100% */
+    .nuestra-historia-imagen,
+    .nuestra-historia-flex .texto-seccion {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    /* Reducir el tamaño de las fuentes en móvil */
+    .texto-seccion h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .texto-seccion h3 {
+        font-size: 1.5rem;
+    }
+
+    .texto-seccion p,
+    .texto-adicional p {
+        font-size: 0.9rem;
+        text-align: justify;
+    }
+}

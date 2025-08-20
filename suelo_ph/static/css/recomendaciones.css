@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+
+
 body, html {
     height: 100%;
     font-family: 'Arial', sans-serif;
@@ -291,7 +293,7 @@ body, html {
     padding: 0;
 }
 
-.informacion li, .recursos li, .soporte li {
+.informacion li a, .recursos li a, .soporte li a{
     margin-bottom: 8px;
     color: white;
 }
@@ -374,4 +376,5 @@ footer {
     color: white;
     border-color: #4caf50;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
-}
+} 
+

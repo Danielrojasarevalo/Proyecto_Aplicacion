@@ -301,7 +301,7 @@ body, html {
   display: none;
 }
 
-/* Estilo para la tabla */
+/* Estilos para la tabla */
 .tabla-wrapper {
     overflow-y: auto;
     width: 90%;
@@ -337,7 +337,7 @@ td {
     background-color: #f9f9f9;
 }
 
-/* Footer container (redes sociales, logo, y la sección de información) */
+
 /* Footer container (redes sociales, logo, y la sección de información) */
 .footer-container {
     width: 100%;
@@ -423,7 +423,7 @@ td {
     color: white;
 }
 
-/* Línea separadora */
+/* Línea separadora footer */
 hr {
     margin-top: 1px;
     border: 1px solid #ddd;
@@ -475,6 +475,64 @@ footer {
     transform: scale(0.97);
 }
 
+
+/* Estilos para el overlay oscuro del modal */
+.modal {
+    display: none; /* Oculta el modal por defecto */
+    position: fixed;
+    z-index: 1000; /* Asegura que esté encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro semitransparente */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+.modal-contenido {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+.cerrar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.cerrar-modal:hover {
+    color: black;
+    cursor: pointer;
+}
+#sugerencias-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+
+/* Responsive*/
 
 
 

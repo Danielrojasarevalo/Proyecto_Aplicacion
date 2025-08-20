@@ -313,3 +313,32 @@ def resultados_view(request):
     }
     return render(request, 'resultados.html', context)
 
+#---------------------------------------------------------------
+from datetime import datetime, timedelta
+
+@login_required
+def buscar_datos_por_fecha(request):
+    fecha = request.GET.get('fecha')
+    finca_id = request.GET.get('finca_id')
+
+    if not fecha or not finca_id:
+        return JsonResponse({'error': 'Faltan parámetros'}, status=400)
+
+    try:
+        auth_user = AuthUser.objects.get(email=request.user.email)
+        finca = get_object_or_404(Fincas, id=finca_id, usuario=auth_user)
+        arduinos = Arduinos.objects.filter(finca=finca)
+
+        fecha_obj = datetime.strptime(fecha, '%Y-%m-%d')
+        fecha_fin = fecha_obj + timedelta(days=1)
+
+        datos = DatosSuelos.objects.filter(
+            arduino__in=arduinos,
+            fecha__gte=fecha_obj,
+            fecha__lt=fecha_fin
+        ).values('humedad', 'temperatura', 'ph', 'fecha', 'arduino__nombre')
+
+        return JsonResponse({'resultados': list(datos)}, status=200)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)

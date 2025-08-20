@@ -1,0 +1,277 @@
+/* Importar una fuente moderna para un diseño más limpio */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Restablecimiento y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    background-color: #f0f2f5;
+    overflow-x: hidden;
+}
+
+/* -------------------- Contenedor Principal (Estilos Móviles - Por Defecto) -------------------- */
+.contenedor {
+    display: flex;
+    flex-direction: column; /* Apila las secciones para móvil */
+    min-height: 100vh;
+}
+
+.lado-izquierdo {
+    display: none; /* Oculta el lado de bienvenida en móviles */
+}
+
+.lado-derecho {
+    width: 100%; /* El lado derecho ocupa todo el ancho */
+    min-height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra el contenido verticalmente */
+    padding: 20px;
+    position: relative;
+}
+
+/* Barra de navegación */
+.barra-navegacion {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.enlaces-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Apila los enlaces en móviles */
+    gap: 15px;
+    width: 100%;
+    text-align: center;
+}
+.enlaces-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #1f531f; /* Fondo verde para botones */
+    transition: background-color 0.3s;
+}
+
+.activo {
+    background-color: #2d7904;
+}
+
+/* Sección de login */
+.seccion-login {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 0; /* No es necesario un margen superior */
+    padding: 0 10px;
+}
+
+.seccion-login h2 {
+    color: #1f531f;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grupo-entrada input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #1f531f;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.grupo-entrada input:focus {
+    border-color: #0981ff;
+    box-shadow: 0 0 8px #0981ffaa;
+    outline: none;
+}
+
+.opciones {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+}
+
+.opciones a {
+    text-decoration: none;
+    color: #1f531f;
+    font-weight: 600;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background-color: #1f531f;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #0f3e0f;
+}
+
+/* Estilo para el enlace de admin */
+.admin-link {
+    position: static;
+    text-align: center;
+    margin-top: 30px;
+}
+.admin-link a {
+    text-decoration: none;
+    color: #1f6e0a;
+    font-weight: 600;
+}
+.admin-link a:hover {
+    color: #c12700;
+}
+
+/* Estilo para ver el password */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+.password-wrapper input {
+    padding-right: 40px;
+}
+.password-wrapper button {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #444;
+}
+
+/* Mensajes y Modales */
+.alert {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.alert p { margin: 0; }
+
+/* -------------------- Media Query para Tablet y Escritorio -------------------- */
+@media (min-width: 769px) {
+    .contenedor {
+        flex-direction: row; /* Diseño de dos columnas para escritorio */
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .lado-izquierdo {
+        display: flex; /* Vuelve a mostrar el lado de bienvenida */
+        flex: 1;
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("/static/image/login.png") no-repeat center center;    
+        background-size: cover;
+        padding: 50px;
+    }
+    .nombre-empresa {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 30px;
+        left: 40px;
+        color: white;
+    }
+    .contenido-bienvenida {
+        flex-grow: 1;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+        max-width: 450px;
+    }
+    .contenido-bienvenida h3 {
+        font-size: 1.5rem;
+    }
+    .contenido-bienvenida h1 {
+        font-size: 3.5rem;
+    }
+    .contenido-bienvenida ul {
+        list-style: none;
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+    .contenido-bienvenida li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 25px;
+    }
+    .contenido-bienvenida li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #c8e6c9;
+        font-weight: bold;
+    }
+
+    .lado-derecho {
+        flex: 1;
+        justify-content: center; /* Centra el contenido verticalmente */
+        padding: 50px 30px;
+    }
+
+    .barra-navegacion {
+        position: absolute; /* Vuelve a usar posición absoluta en escritorio */
+        top: 0;
+        background-color: #1f531f;
+    }
+
+    .enlaces-nav {
+        flex-direction: row;
+        gap: 30px;
+    }
+    .enlaces-nav a {
+        background-color: transparent;
+    }
+    
+    .seccion-login {
+        margin-top: 0; /* Se elimina el margen superior, el centrado lo maneja el padre */
+    }
+
+    .admin-link {
+        position: absolute;
+        bottom: 20px;
+        right: 30px;
+    }
+}
