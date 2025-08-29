@@ -215,16 +215,17 @@ def datos_json(request):
         'ph',
         'arduino__nombre'  # Incluye el nombre del arduino
     ).order_by('-fecha')  # Ordena por fecha descendente
-
     lista_datos = []
     for d in datos:
+        fecha_formateada = d['fecha'].strftime('%Y-%m-%d %H:%M:%S') if d['fecha'] else None
         lista_datos.append({
-            'fecha': d['fecha'].strftime('%Y-%m-%d %H:%M:%S'),  # Formato más completo
-            'humedad': d['humedad'],
-            'temperatura': d['temperatura'],
-            'ph': d['ph'],
-            'arduino': d['arduino__nombre'],  # Nombre del dispositivo
-        })
+        'fecha': fecha_formateada,
+        'humedad': d['humedad'],
+        'temperatura': d['temperatura'],
+        'ph': d['ph'],
+        'arduino': d['arduino__nombre'],
+    })
+
 
     return JsonResponse(lista_datos, safe=False)
 
