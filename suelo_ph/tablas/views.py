@@ -342,3 +342,36 @@ def buscar_datos_por_fecha(request):
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+
+
+
+
+
+@csrf_exempt
+@require_POST
+def recibir_datos_wifi(request):
+    try:
+        data = json.loads(request.body)
+        arduino_id = data.get('arduino_id')
+
+        humedad = float(data.get('humedad_suelo', 0))
+        temperatura = float(data.get('temperatura', 0))
+        ph = float(data.get('ph', 0))
+
+        arduino_obj = Arduinos.objects.get(id=arduino_id)
+
+        # Crear un nuevo registro cada vez que llegue un dato
+        DatosSuelos.objects.create(
+            humedad=humedad,
+            temperatura=temperatura,
+            ph=ph,
+            fecha=datetime.now(),
+            arduino=arduino_obj
+        )
+
+        return JsonResponse({'status': 'ok'})
+
+    except Arduinos.DoesNotExist:
+        return JsonResponse({'status': 'error', 'detalle': f'Arduino con id {arduino_id} no existe'}, status=400)
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'detalle': str(e)}, status=400)

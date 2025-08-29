@@ -152,6 +152,7 @@
 
     .acordeon-header.active .icono-acordeon {
         transform: rotate(45deg);
+    
     }
     
     /* Estilos para la sección de copyright */

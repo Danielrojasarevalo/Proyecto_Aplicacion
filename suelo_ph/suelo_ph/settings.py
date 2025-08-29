@@ -111,7 +111,10 @@ DEFAULT_FROM_EMAIL = 'rojasarevalodaniel@gmail.com'
 
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 LOGIN_URL = '/index/login/login/'
+LOGIN_REDIRECT_URL = '/index/login/login/'
 
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', '192.168.1.57', '192.168.1.200']
 
 
 # Password validation

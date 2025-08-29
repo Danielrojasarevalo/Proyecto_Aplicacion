@@ -7,6 +7,7 @@
     <title>Recuperar Contraseña</title>
     <link rel="stylesheet" href="{% static 'css/recuperar_contraseña.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/responsive_RecuperarContra.css' %}">
 </head>
 <body>
 
@@ -30,7 +31,7 @@
     <!-- Parte Derecha -->
     <div class="right-side">
         <div class="recovery-section">
-            <h2>Te Damos La Bienvenida</h2>
+            <h2>Recuperara tu contraseña</h2>
             <form class="recovery-form" method="post">
                 {% csrf_token %}
                 <div class="input-group">

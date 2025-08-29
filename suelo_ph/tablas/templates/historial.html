@@ -175,7 +175,27 @@
                     </tr>
                 </tbody>
             </table>
-            <button id="sugerencias-btn">Sugerencias</button>
+
+            <br>
+
+           <p id="fecha-texto">
+            El día <span id="dia"></span> del mes <span id="mes"></span> del año <span id="anio"></span> 
+        
+            ¿Quieres sugerencias sobre qué fertilizantes deberías usar? <br>
+            Siendo así, procede a dar click al botón de sugerencias:
+        </p>
+
+        <br>
+
+  <div class="boton-wrapper">
+    <form action="{% url 'recomendaciones' %}" method="get">
+        <input type="hidden" name="id" value="{{ request.GET.id }}">
+        <button   id="sugerencias-btn" type="submit">
+            Sugerencias
+        </button>
+    </form>
+</div>
+
         </div>
     </div>
  
@@ -183,5 +203,6 @@
     <script src="{% static 'javascript/historial_datos.js' %}"></script>
     <script src="{% static 'javascript/barra_d_busqueda.js' %}"></script>
      <script src="{% static 'javascript/responsive mobil.js' %}"></script>
+     
 </body>
 </html>

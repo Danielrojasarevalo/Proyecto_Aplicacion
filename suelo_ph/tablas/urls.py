@@ -20,6 +20,9 @@ urlpatterns = [
 
 
     path('buscar_fecha/', views.buscar_datos_por_fecha, name='buscar_datos_por_fecha'),
+
+    path("recibir_datos_wifi/", views.recibir_datos_wifi, name="recibir_datos_wifi"),
+
     
 ]
 

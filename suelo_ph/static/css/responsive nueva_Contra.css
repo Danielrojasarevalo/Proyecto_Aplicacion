@@ -1,0 +1,159 @@
+/* ====== ESTILOS GENERALES ====== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* ====== IZQUIERDA ====== */
+.left-side {
+    flex: 1;
+    background: #4CAF50;
+    color: white;
+    padding: 40px 30px;
+}
+
+.company-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.welcome-content h3 {
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.welcome-content h1 {
+    margin: 5px 0 20px 0;
+}
+
+/* Lista con chulitos ✓ */
+.left-side ul {
+    list-style: none;
+    padding: 0;
+}
+
+.left-side li {
+    margin: 12px 0;
+    font-size: 16px;
+    position: relative;
+    padding-left: 28px;
+}
+
+.left-side li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ====== DERECHA ====== */
+.right-side {
+    flex: 1;
+    padding: 40px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reset-section {
+    width: 100%;
+    max-width: 400px;
+}
+
+.reset-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fafafa;
+}
+
+.input-group i {
+    margin-right: 10px;
+    color: #4CAF50;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+    background: none;
+}
+
+.confirm-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.confirm-btn i {
+    margin-left: 8px;
+}
+
+.confirm-btn:hover {
+    background: #45a049;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        max-width: 95%;
+    }
+
+    .left-side {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .left-side ul {
+        text-align: left;
+        display: inline-block;
+    }
+
+    .right-side {
+        padding: 20px;
+    }
+
+    /* Cuadro solo en móvil */
+    .reset-section {
+        background: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+}

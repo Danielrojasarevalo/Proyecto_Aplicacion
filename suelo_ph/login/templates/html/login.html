@@ -27,8 +27,23 @@
         </div>
     </div>
 
+             <header class="header-movil">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <h1 class="titulo-movil">Pagina de Inicio</h1>
+    <img src="{% static 'image/logo_empresa.png' %}" alt="Logo" class="logo-movil">
+  </header>
+
+        <div id="mobileMenu" class="mobile-menu">
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'nosotros' %}">Nosotros</a>
+        <a href="{% url 'contactanos' %}">Contáctanos</a>
+        <a href="{% url 'login' %}" class="btn-cerrar">Iniciar Sesion</a>
+    </div>
+
     <!-- Parte Derecha -->
     <div class="lado-derecho">
+
+
         <nav class="barra-navegacion">
             <ul class="enlaces-nav">
                 <li><a class="activo" href="{% url 'login' %}">Sesion</a></li>
@@ -37,6 +52,9 @@
                 <li><a href="{% url 'contactanos' %}">Contáctanos</a></li>
             </ul>
         </nav>
+
+    
+    
         
         <div class="seccion-login">
             <h2>{{ title }}</h2>
@@ -128,6 +146,8 @@
   var abrir_modal_fincas_str = "{{ abrir_modal_fincas }}";
 </script>
 <script src="{% static 'javascript/login.js' %}"></script>
+ <script src="{% static 'javascript/responsive mobil.js' %}"></script>
+
 
 
 </body>

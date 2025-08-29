@@ -280,3 +280,62 @@
     height: 30px;
     margin-left: 10px; /* Espacio entre los iconos */
 }
+
+/* Contenido del modal */
+.modal-contenido {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    text-align: center; /* centra el texto y botón */
+}
+
+/* Texto responsivo */
+#fecha-texto {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 20px 0;
+}
+
+/* Botón */
+.boton-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#sugerencias-btn {
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+#sugerencias-btn:hover {
+    background-color: #218838;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .modal-contenido {
+        width: 95%; /* más ancho en móviles */
+        margin: 20% auto;
+        padding: 15px;
+    }
+
+    #fecha-texto {
+        font-size: 14px;
+    }
+
+    #sugerencias-btn {
+        width: 100%; /* botón ocupa todo el ancho */
+        padding: 12px 0;
+    }
+}
+
