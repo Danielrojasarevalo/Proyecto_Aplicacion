@@ -21,18 +21,21 @@ REGLAS_ABONOS = [
 ]
 
 def recomendar_abono(ph, humedad, temperatura, temporada):
+    recomendados = []
     for regla in REGLAS_ABONOS:
         if regla["condicion"](ph, humedad, temperatura, temporada):
             # Buscar en Productos
             producto = Productos.objects.filter(nombre__icontains=regla["nombre"]).first()
             if producto:
-                return producto.nombre
+                recomendados.append(producto.nombre)
+                continue
             # Buscar en TipoAbono
             abono = TipoAbono.objects.filter(nombre__icontains=regla["nombre"]).first()
             if abono:
-                return abono.nombre
+                recomendados.append(abono.nombre)
+                continue
             # Si no encontró en la BD → fallback
-            return regla["fallback"]
-    
-    # Si no se cumple ninguna regla
-    return "NO HAY ABONOS RECOMENDADOS PARA ESOS DATOS"
+            recomendados.append(regla["fallback"])
+    if not recomendados:
+        recomendados.append("NO HAY ABONOS RECOMENDADOS PARA ESOS DATOS")
+    return recomendados

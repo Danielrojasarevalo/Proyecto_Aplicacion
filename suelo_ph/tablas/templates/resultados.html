@@ -46,74 +46,104 @@
 
     <div class="table-container" style="margin-top: 40px;">
         <h2 style="text-align: center; color: #4CAF50;">Abono recomendado</h2>
-        <div style="text-align: center; font-size: 1.3em; margin-bottom: 20px;">
-            <strong>{{ abono_recomendado }}</strong>
-
-        </div>
-        {% if abono_descripcion %}
-        <div id="desc-abono" class="descripcion-producto" style="display:none; text-align:center; background:#f6fff6; color:#222; border-radius:8px; margin:0 auto 20px auto; max-width:600px;">
-            <strong>Descripción del abono:</strong> {{ abono_descripcion }}
-        </div>
-        <script>
-        function mostrarDescripcion(id) {
-            var fila = document.getElementById(id);
-            if (fila.style.display === 'none') {
-                fila.style.display = '';
-            } else {
-                fila.style.display = 'none';
-            }
-        }
-        </script>
-        {% endif %}
-
-        {% if productos_recomendados and productos_recomendados|length > 0 %}
-        <table class="results-table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for prod in productos_recomendados %}
-                <tr>
-                    <td>{{ prod.nombre }}</td>
-                    <td>
-                        <button class="btn-mas-info" type="button" onclick="mostrarDescripcion('desc-{{ forloop.counter }}')">Más información</button>
-                    </td>
-                </tr>
-                <tr id="desc-{{ forloop.counter }}" class="descripcion-producto" style="display:none;">
-                    <td colspan="2" style="background:#f6fff6; color:#222; border-top:0;">
-                        <strong>Descripción:</strong> {{ prod.descripcion }}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <script>
-        function mostrarDescripcion(id) {
-            var fila = document.getElementById(id);
-            if (fila.style.display === 'none') {
-                fila.style.display = '';
-            } else {
-                fila.style.display = 'none';
-            }
-        }
-        </script>
-        {% endif %}
+        {% if abonos_info and abonos_info|length > 0 %}
+            {% with abono=abonos_info.0 %}
+                <div class="abono-bloque" style="margin-bottom:40px;">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        {% if abono.nombre != "NO HAY ABONOS RECOMENDADOS PARA ESOS DATOS" %}
+                        <h2 style="text-align: center;">{{ abono.nombre }}</h2>
+                        {% endif %}
+                        {% if abono.descripcion %}
+                        <div style="max-width: 600px; text-align: center;">
+                            <strong>Descripción del abono:</strong> {{ abono.descripcion }}
+                        </div>
+                        {% endif %}
+                        {% if abono.imagenes and abono.imagenes|length > 0 %}
+                            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
+                                <strong style="width: 100%; text-align: center;">Imágenes del abono</strong><br>
+                                {% for imagen in abono.imagenes %}
+                                    {% if imagen.imagen %}
+                                        <img src="{{ imagen.imagen.url }}" alt="{{ abono.nombre }}" style="max-width: 200px; margin: 10px; display: block;">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% if abono.productos and abono.productos|length > 0 %}
+                            <div style="max-width: 600px; text-align: center; margin-top: 10px;">
+                                <strong>Productos recomendados:</strong>
+                                <ul style="list-style: none; padding: 0;">
+                                    {% for producto in abono.productos %}
+                                        <li>{{ producto.nombre }}{% if producto.descripcion %}: {{ producto.descripcion }}{% endif %}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endwith %}
+            {% if abonos_info|length > 1 %}
+                <div style="text-align:center; margin-bottom:20px;">
+                    <button id="ver-otros-abonos-btn" style="background-color:#4CAF50; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; font-size:1em;">Ver otros abonos</button>
+                </div>
+                <div id="otros-abonos-container" style="display:none;">
+                    {% for abono in abonos_info|slice:"1:" %}
+                        <div class="abono-bloque" style="margin-bottom:40px;">
+                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                <h2 style="text-align: center;">{{ abono.nombre }}</h2>
+                                {% if abono.descripcion %}
+                                <div style="max-width: 600px; text-align: center;">
+                                    <strong>Descripción del abono:</strong> {{ abono.descripcion }}
+                                </div>
+                                {% endif %}
+                                {% if abono.imagenes and abono.imagenes|length > 0 %}
+                                <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
+                                    <strong style="width: 100%; text-align: center;">Imágenes del abono</strong><br>
+                                    {% for imagen in abono.imagenes %}
+                                        {% if imagen.imagen %}
+                                            <img src="{{ imagen.imagen.url }}" alt="{{ abono.nombre }}" style="max-width: 200px; margin: 10px; display: block;">
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                                {% if abono.productos and abono.productos|length > 0 %}
+                                <div style="max-width: 600px; text-align: center; margin-top: 10px;">
+                                    <strong>Productos recomendados:</strong>
+                                    <ul style="list-style: none; padding: 0;">
+                                        {% for producto in abono.productos %}
+                                            <li>{{ producto.nombre }}{% if producto.descripcion %}: {{ producto.descripcion }}{% endif %}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var btn = document.getElementById('ver-otros-abonos-btn');
+                    var otros = document.getElementById('otros-abonos-container');
+                    if(btn && otros) {
+                        btn.addEventListener('click', function() {
+                            if(otros.style.display === 'none') {
+                                otros.style.display = 'block';
+                                btn.textContent = 'Ocultar otros abonos';
+                            } else {
+                                otros.style.display = 'none';
+                                btn.textContent = 'Ver otros abonos';
+                            }
+                        });
+                    }
+                });
+                </script>
+            {% endif %}
+    {% else %}
+        <!-- Eliminado letrero duplicado -->
+    {% endif %}
     </div>
 
     <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
-        <button id="show-temporada-btn" style="
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-        ">Ver Información</button>
+    <!-- Button 'Ver Información' has been removed -->
     </div>
 
     <div id="temporada-container" style="display: none;">

@@ -238,6 +238,7 @@ def resultados_view(request):
     temporada = request.GET.get('temporada') or request.GET.get('tipo_abono_nombre')
     finca_id = request.GET.get('finca_id')
     error_message = None
+    abonos_info = []
 
     if all([fecha_desde, fecha_hasta, temporada, finca_id]):
         try:
@@ -273,34 +274,44 @@ def resultados_view(request):
             else:
                 temperatura_promedio = 0
             from .recomendador import recomendar_abono
-            abono_recomendado = recomendar_abono(ph_promedio, humedad_promedio, temperatura_promedio, temporada)
-            # Buscar el objeto TipoAbono correspondiente al abono recomendado
-            tipo_abono_obj = TipoAbono.objects.filter(nombre__icontains=abono_recomendado).first()
-            if tipo_abono_obj:
-                productos = Productos.objects.filter(tipo_abono=tipo_abono_obj, finca=finca)
-                abono_imagenes = list(tipo_abono_obj.imagenes.all())
-            else:
-                productos = Productos.objects.filter(nombre__icontains=abono_recomendado, finca=finca)
-            productos_recomendados = [{
-                'nombre': p.nombre,
-                'descripcion': p.descripcion
-            } for p in productos]
-            # Usar la descripción del primer producto relacionado al tipo_abono
-            abono_descripcion = None
-            if tipo_abono_obj:
-                producto_con_desc = Productos.objects.filter(tipo_abono=tipo_abono_obj, descripcion__isnull=False).exclude(descripcion='').first()
-                if producto_con_desc:
-                    abono_descripcion = producto_con_desc.descripcion
-            if not abono_descripcion and productos_recomendados:
-                abono_descripcion = productos_recomendados[0]['descripcion']
+            abonos_recomendados = recomendar_abono(ph_promedio, humedad_promedio, temperatura_promedio, temporada)
+            if not isinstance(abonos_recomendados, list):
+                abonos_recomendados = [abonos_recomendados]
+            abonos_info = []
+            for abono_nombre in abonos_recomendados:
+                tipo_abono_obj = TipoAbono.objects.filter(nombre__icontains=abono_nombre).first()
+                if tipo_abono_obj:
+                    productos = Productos.objects.filter(tipo_abono=tipo_abono_obj, finca=finca)
+                    abono_imagenes = list(tipo_abono_obj.imagenes.all())
+                else:
+                    productos = Productos.objects.filter(nombre__icontains=abono_nombre, finca=finca)
+                    abono_imagenes = []
+                productos_recomendados = [{
+                    'nombre': p.nombre,
+                    'descripcion': p.descripcion
+                } for p in productos]
+                abono_descripcion = None
+                if tipo_abono_obj:
+                    producto_con_desc = Productos.objects.filter(tipo_abono=tipo_abono_obj, descripcion__isnull=False).exclude(descripcion='').first()
+                    if producto_con_desc:
+                        abono_descripcion = producto_con_desc.descripcion
+                if not abono_descripcion and productos_recomendados:
+                    abono_descripcion = productos_recomendados[0]['descripcion']
+                abonos_info.append({
+                    'nombre': abono_nombre,
+                    'descripcion': abono_descripcion,
+                    'productos': productos_recomendados,
+                    'imagenes': abono_imagenes,
+                })
         except Exception as e:
             error_message = str(e)
+            abonos_info = []
     else:
         error_message = 'Faltan parámetros requeridos para mostrar los resultados.'
+        abonos_info = []
 
     context = {
-        'abono_recomendado': abono_recomendado,
-        'productos_recomendados': productos_recomendados,
+        'abonos_info': abonos_info,
         'datos': datos,
         'ph_promedio': ph_promedio,
         'humedad_promedio': locals().get('humedad_promedio', None),
@@ -309,8 +320,6 @@ def resultados_view(request):
         'fecha_hasta': fecha_hasta,
         'temporada': temporada,
         'error_message': error_message,
-        'abono_descripcion': abono_descripcion,
-        'abono_imagenes': abono_imagenes,
     }
     return render(request, 'resultados.html', context)
 
