@@ -133,6 +133,17 @@
                 <div class="abono-info" style="margin-top:20px;">
                     <h3>Descripción del Abono Recomendado</h3>
                     <p>{{ abono_descripcion }}</p>
+                    {% if abono_imagenes %}
+                    <div class="abono-imagenes-container" style="margin-top:20px;">
+                        <h4>Imágenes del abono recomendado</h4>
+                        {% for imagen in abono_imagenes %}
+                            <div class="abono-imagen-item" style="margin-bottom:10px;">
+                                <img src="{{ imagen.imagen.url }}" alt="Imagen de abono" style="max-width:300px;">
+                                {% if imagen.titulo %}<div>{{ imagen.titulo }}</div>{% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
             {% endif %}
         </div>

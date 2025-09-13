@@ -166,6 +166,12 @@ STATICFILES_DIRS = [
 # Carpeta donde se recopilarán los archivos estáticos cuando se ejecute 'collectstatic'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+MEDIA_URL = "/media/"
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_ROOT = BASE_DIR / "media"
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

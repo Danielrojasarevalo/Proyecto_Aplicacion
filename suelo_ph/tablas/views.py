@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import DatosSuelos, Fincas, Arduinos,TipoAbono, Productos
-from .serializers import FincasSerializer
+from .serializers import TipoAbonoSerializer
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from login.models import AuthUser
@@ -11,16 +11,14 @@ import json
 from django.views.decorators.http import require_POST
 from datetime import datetime
 from .recomendador import recomendar_abono
+from rest_framework import viewsets
+
 
 
 def login_view(request):
     return render(request, 'login.html')
 def recomendaciones_view(request):
     return render(request, 'recomendaciones.html')  
-
-
-
-
 
 
 @login_required
@@ -280,6 +278,7 @@ def resultados_view(request):
             tipo_abono_obj = TipoAbono.objects.filter(nombre__icontains=abono_recomendado).first()
             if tipo_abono_obj:
                 productos = Productos.objects.filter(tipo_abono=tipo_abono_obj, finca=finca)
+                abono_imagenes = list(tipo_abono_obj.imagenes.all())
             else:
                 productos = Productos.objects.filter(nombre__icontains=abono_recomendado, finca=finca)
             productos_recomendados = [{
@@ -311,6 +310,7 @@ def resultados_view(request):
         'temporada': temporada,
         'error_message': error_message,
         'abono_descripcion': abono_descripcion,
+        'abono_imagenes': abono_imagenes,
     }
     return render(request, 'resultados.html', context)
 
@@ -376,3 +376,8 @@ def recibir_datos_wifi(request):
         return JsonResponse({'status': 'error', 'detalle': f'Arduino con id {arduino_id} no existe'}, status=400)
     except Exception as e:
         return JsonResponse({'status': 'error', 'detalle': str(e)}, status=400)
+    
+
+class TipoAbonoViewSet(viewsets.ReadOnlyModelViewSet): # type: ignore
+    queryset = TipoAbono.objects.all()
+    serializer_class = TipoAbonoSerializer
