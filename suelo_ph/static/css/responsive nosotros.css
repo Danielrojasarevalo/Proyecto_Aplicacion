@@ -69,29 +69,12 @@
 
 /* ======== Responsive (Unificado) ======== */
 @media (max-width: 968px) {
-    /* Esconde menú de escritorio */
-    .barra-navegacion-superior {
-        display: none;
-    }
+    .barra-navegacion-superior { display: none; }
+    .cerrar-sesion { display: none; }
+    .header-movil { display: flex; }
 
-    /* Esconde botón flotante de escritorio */
-    .cerrar-sesion {
-        display: none;
-    }
+    .footer-container { padding: 0; }
 
-    /* Activa header móvil */
-    .header-movil {
-        display: flex;
-    }
-
-    /* ----- Estilos para el footer en móviles ----- */
-    .footer-container {
-        padding: 0;
-    }
-
-   
-
-    /* Estilos para las secciones de información, recursos y soporte (ACORDEÓN) */
     .informacion-footer {
         flex-direction: column;
         align-items: center;
@@ -111,159 +94,108 @@
         align-items: center;
         padding: 15px 20px;
         background-color: #1D9100;
-        color: white;
+        color: #fff;
         cursor: pointer;
         font-size: 1.2em;
         font-weight: bold;
+        margin: 0;
+        transition: color .2s ease, background-color .2s ease;
+    }
+
+    .acordeon-header .icono-acordeon {
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: transform .3s ease, color .2s ease;
+    }
+
+    .acordeon-header.active {
+        color: #c8e6c9 !important;
+        background-color: #106600 !important;
+    }
+    .acordeon-header.active .icono-acordeon {
+        color: #c8e6c9 !important;
+        transform: rotate(45deg);
     }
 
     .acordeon-content {
         display: none;
-        list-style: none;
+        list-style-type: disc;
+        list-style-position: outside;
         padding: 10px 20px;
         background-color: #106600;
         overflow: hidden;
+        color: #fff;
     }
-    
-    .acordeon-content.active {
-        display: block;
-    }
+
+    .acordeon-content.active { display: block; }
 
     .acordeon-content li {
         padding: 5px 0;
+        color: #fff;
     }
 
+    .acordeon-content li::marker { color: #fff; }
+
     .acordeon-content li a {
-        color: white;
+        color: #fff;
         text-decoration: none;
         display: block;
         transition: color 0.2s ease;
     }
+    .acordeon-content li a:hover { color: #c8e6c9; }
 
-    .acordeon-content li a:hover {
-        color: #c8e6c9;
-    }
-
-    .icono-acordeon {
-        font-size: 1.5em;
-        font-weight: bold;
-        transition: transform 0.3s ease;
-    }
-
-    .acordeon-header.active .icono-acordeon {
-        transform: rotate(45deg);
-    }
-    
-    /* Estilos para la sección de copyright */
     footer {
         flex-direction: column;
         align-items: center;
         text-align: center;
         padding: 10px;
     }
-    .footer-left, .footer-right {
-        margin: 5px 0;
+    .footer-left, .footer-right { margin: 5px 0; }
+}
+
+/* ===== Escritorio ===== */
+@media (min-width: 969px) {
+    .acordeon-header { 
+        color: #fff !important; /* títulos blancos */
     }
-
-}
-
-/* Contenedor principal de la sección "Nuestra Historia" */
-.contenedor-nuestra-historia {
-    padding: 80px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Títulos y párrafos de la sección */
-.texto-seccion h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #1d9100;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.texto-seccion h3 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #1d9100;
-    margin-bottom: 20px;
-}
-
-.texto-seccion p,
-.texto-adicional p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555;
-    text-align: justify;
-    margin-bottom: 20px;
-}
-
-/* Contenedor Flex para la imagen y el texto */
-.nuestra-historia-flex {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    margin-top: 40px;
-}
-
-/* Estilos de la imagen y el texto dentro del flexbox */
-.nuestra-historia-imagen {
-    flex: 1;
-    max-width: 50%;
-}
-
-.nuestra-historia-imagen img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.nuestra-historia-flex .texto-seccion {
-    flex: 1;
-    max-width: 50%;
-}
-
-/* Estilos para el texto adicional */
-.texto-adicional {
-    margin-top: 40px;
-    text-align: justify;
-}
-
-/* -------------------- Media Queries para Responsive Design -------------------- */
-@media (max-width: 768px) {
-    /* Ajustes para la sección principal */
-    .contenedor-nuestra-historia {
-        padding: 40px 20px;
+    .acordeon-content { 
+        display: block !important; /* abierto por defecto */
     }
-
-    /* Apilar la imagen y el texto en móvil */
-    .nuestra-historia-flex {
-        flex-direction: column;
-        gap: 30px;
+    .acordeon-header .icono-acordeon { 
+        display: none !important; 
     }
+}
 
-    /* Ajustar el ancho de los elementos a 100% */
-    .nuestra-historia-imagen,
-    .nuestra-historia-flex .texto-seccion {
-        max-width: 100%;
-        text-align: left;
-    }
+/* ===== Global override ===== */
+.informacion-footer h3,
+.informacion-footer ul,
+.informacion-footer li,
+.informacion-footer a {
+  color: #fff !important;
+}
 
-    /* Reducir el tamaño de las fuentes en móvil */
-    .texto-seccion h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
+.informacion-footer li::marker {
+  color: #fff !important;
+}
 
-    .texto-seccion h3 {
-        font-size: 1.5rem;
-    }
 
-    .texto-seccion p,
-    .texto-adicional p {
-        font-size: 0.9rem;
-        text-align: justify;
-    }
+/* Hover sutil en desktop */
+@media (hover:hover){
+  .tarjeta:hover, .timeline-content:hover{
+    transform: translateY(-2px);
+    transition: transform .2s ease;
+  }
+}
+
+/* Responsive */
+@media (max-width: 960px){
+  .nosotros-hero{ grid-template-columns: 1fr; }
+  .nosotros-imagen img{ height: 260px; }
+  .nosotros-titulo{ font-size: 28px; }
+}
+
+@media (max-width: 420px){
+  .dato{ min-width: 120px; padding:8px 10px; }
+  .nosotros-imagen img{ height: 220px; }
 }

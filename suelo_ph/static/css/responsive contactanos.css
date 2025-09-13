@@ -69,29 +69,12 @@
 
 /* ======== Responsive (Unificado) ======== */
 @media (max-width: 968px) {
-    /* Esconde menú de escritorio */
-    .barra-navegacion-superior {
-        display: none;
-    }
+    .barra-navegacion-superior { display: none; }
+    .cerrar-sesion { display: none; }
+    .header-movil { display: flex; }
 
-    /* Esconde botón flotante de escritorio */
-    .cerrar-sesion {
-        display: none;
-    }
+    .footer-container { padding: 0; }
 
-    /* Activa header móvil */
-    .header-movil {
-        display: flex;
-    }
-
-    /* ----- Estilos para el footer en móviles ----- */
-    .footer-container {
-        padding: 0;
-    }
-
-   
-
-    /* Estilos para las secciones de información, recursos y soporte (ACORDEÓN) */
     .informacion-footer {
         flex-direction: column;
         align-items: center;
@@ -111,62 +94,91 @@
         align-items: center;
         padding: 15px 20px;
         background-color: #1D9100;
-        color: white;
+        color: #fff;
         cursor: pointer;
         font-size: 1.2em;
         font-weight: bold;
+        margin: 0;
+        transition: color .2s ease, background-color .2s ease;
+    }
+
+    .acordeon-header .icono-acordeon {
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: transform .3s ease, color .2s ease;
+    }
+
+    .acordeon-header.active {
+        color: #c8e6c9 !important;
+        background-color: #106600 !important;
+    }
+    .acordeon-header.active .icono-acordeon {
+        color: #c8e6c9 !important;
+        transform: rotate(45deg);
     }
 
     .acordeon-content {
         display: none;
-        list-style: none;
+        list-style-type: disc;
+        list-style-position: outside;
         padding: 10px 20px;
         background-color: #106600;
         overflow: hidden;
+        color: #fff;
     }
-    
-    .acordeon-content.active {
-        display: block;
-    }
+
+    .acordeon-content.active { display: block; }
 
     .acordeon-content li {
         padding: 5px 0;
+        color: #fff;
     }
 
+    .acordeon-content li::marker { color: #fff; }
+
     .acordeon-content li a {
-        color: white;
+        color: #fff;
         text-decoration: none;
         display: block;
         transition: color 0.2s ease;
     }
+    .acordeon-content li a:hover { color: #c8e6c9; }
 
-    .acordeon-content li a:hover {
-        color: #c8e6c9;
-    }
-
-    .icono-acordeon {
-        font-size: 1.5em;
-        font-weight: bold;
-        transition: transform 0.3s ease;
-    }
-
-    .acordeon-header.active .icono-acordeon {
-        transform: rotate(45deg);
-    
-    }
-    
-    /* Estilos para la sección de copyright */
     footer {
         flex-direction: column;
         align-items: center;
         text-align: center;
         padding: 10px;
     }
-    .footer-left, .footer-right {
-        margin: 5px 0;
-    }
-
+    .footer-left, .footer-right { margin: 5px 0; }
 }
+
+/* ===== Escritorio ===== */
+@media (min-width: 969px) {
+    .acordeon-header { 
+        color: #fff !important; /* títulos blancos */
+    }
+    .acordeon-content { 
+        display: block !important; /* abierto por defecto */
+    }
+    .acordeon-header .icono-acordeon { 
+        display: none !important; 
+    }
+}
+
+/* ===== Global override ===== */
+.informacion-footer h3,
+.informacion-footer ul,
+.informacion-footer li,
+.informacion-footer a {
+  color: #fff !important;
+}
+
+.informacion-footer li::marker {
+  color: #fff !important;
+}
+
 
 /* -------------------- Media Queries para Responsividad -------------------- */
 @media (max-width: 768px) {

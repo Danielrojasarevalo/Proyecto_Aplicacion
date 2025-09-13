@@ -66,32 +66,14 @@
 .mobile-menu .btn-cerrar:hover {
     background: darkred;
 }
-
-/* ======== Responsive (Unificado) ======== */
+/* ======== Responsive (Móvil) ======== */
 @media (max-width: 968px) {
-    /* Esconde menú de escritorio */
-    .barra-navegacion-superior {
-        display: none;
-    }
+    .barra-navegacion-superior { display: none; }
+    .cerrar-sesion { display: none; }
+    .header-movil { display: flex; }
 
-    /* Esconde botón flotante de escritorio */
-    .cerrar-sesion {
-        display: none;
-    }
+    .footer-container { padding: 0; }
 
-    /* Activa header móvil */
-    .header-movil {
-        display: flex;
-    }
-
-    /* ----- Estilos para el footer en móviles ----- */
-    .footer-container {
-        padding: 0;
-    }
-
-   
-
-    /* Estilos para las secciones de información, recursos y soporte (ACORDEÓN) */
     .informacion-footer {
         flex-direction: column;
         align-items: center;
@@ -111,59 +93,254 @@
         align-items: center;
         padding: 15px 20px;
         background-color: #1D9100;
-        color: white;
+        color: #fff;
         cursor: pointer;
         font-size: 1.2em;
         font-weight: bold;
+        margin: 0;
+        transition: color .2s ease, background-color .2s ease;
+    }
+
+    .acordeon-header .icono-acordeon {
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: transform .3s ease, color .2s ease;
+    }
+
+    .acordeon-header.active {
+        color: #c8e6c9 !important;
+        background-color: #106600 !important;
+    }
+    .acordeon-header.active .icono-acordeon {
+        color: #c8e6c9 !important;
+        transform: rotate(45deg);
     }
 
     .acordeon-content {
         display: none;
-        list-style: none;
+        list-style-type: disc;
+        list-style-position: outside;
         padding: 10px 20px;
         background-color: #106600;
         overflow: hidden;
+        color: #fff;
     }
-    
-    .acordeon-content.active {
-        display: block;
-    }
+
+    .acordeon-content.active { display: block; }
 
     .acordeon-content li {
         padding: 5px 0;
+        color: #fff;
     }
 
+    .acordeon-content li::marker { color: #fff; }
+
     .acordeon-content li a {
-        color: white;
+        color: #fff;
         text-decoration: none;
         display: block;
         transition: color 0.2s ease;
     }
+    .acordeon-content li a:hover { color: #c8e6c9; }
 
-    .acordeon-content li a:hover {
-        color: #c8e6c9;
-    }
-
-    .icono-acordeon {
-        font-size: 1.5em;
-        font-weight: bold;
-        transition: transform 0.3s ease;
-    }
-
-    .acordeon-header.active .icono-acordeon {
-        transform: rotate(45deg);
-    }
-    
-    /* Estilos para la sección de copyright */
     footer {
         flex-direction: column;
         align-items: center;
         text-align: center;
         padding: 10px;
     }
-    .footer-left, .footer-right {
-        margin: 5px 0;
-    }
-
+    .footer-left, .footer-right { margin: 5px 0; }
 }
 
+/* ===== Escritorio ===== */
+@media (min-width: 969px) {
+    .acordeon-header { 
+        color: #fff !important;
+    }
+    .acordeon-content { 
+        display: block !important;
+    }
+    .acordeon-header .icono-acordeon { 
+        display: none !important; 
+    }
+}
+
+/* ===== Global override ===== */
+.informacion-footer h3,
+.informacion-footer ul,
+.informacion-footer li,
+.informacion-footer a {
+  color: #fff !important;
+}
+
+.informacion-footer li::marker {
+  color: #fff !important;
+}
+
+
+/* ====== Responsive para Servicios + Temporadas + Modal + Métricas (CLASES EN ESPAÑOL) ====== */
+@media (max-width: 968px) {
+
+  /* Contenedor principal */
+  .seccion-contenido{
+    padding: 20px 16px 28px;
+  }
+  .titulo-seccion{ font-size: 32px; }
+
+  /* 3 tarjetas -> 1 columna */
+  .tarjetas-3{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .tarjeta{ padding: 16px; }
+  .titulo-tarjeta{ font-size: 18px; }
+
+  /* ¿Por qué el café? -> apilado */
+  .fila-por-que{
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+  .imagen-por-que{
+    height: 200px;
+    border-radius: 12px;
+  }
+  .texto-por-que h3{ font-size: 22px; }
+  .texto-por-que p{ font-size: 15px; line-height: 1.55; }
+
+  /* ¿Por qué elegirnos? -> 1 columna */
+  .por-que-elegirnos{ padding: 14px; }
+  .por-que-elegirnos h3{ font-size: 22px; }
+  .cuadricula-ventajas{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .item-ventaja h4{ font-size: 16px; }
+  .item-ventaja p{ font-size: 14px; }
+
+  /* Sección Temporadas */
+  .titulo-seccion-secundario{ font-size: 24px; }
+  .subtitulo-seccion{ font-size: 14px; }
+  .seccion-temporadas .boton{
+    width: 100%;
+    max-width: 460px;
+  }
+
+  /* Modal temporadas (cuerpo y carrusel) */
+  .modal-dialogo{
+    margin: 3vh auto;
+    width: calc(100% - 20px);
+    max-width: 720px;
+    border-radius: 12px;
+  }
+  .modal-encabezado{
+    padding: 14px 16px;
+  }
+  .modal-encabezado h3{ font-size: 22px; }
+  .modal-cerrar{ width: 34px; height: 34px; font-size: 22px; }
+
+  .modal-cuerpo{ padding: 12px; }
+
+  .carrusel{ max-width: 100%; }
+  .carrusel-diapo{ padding: 0 8px; }
+  .carrusel-imagen{
+    max-height: 260px;          
+    border-radius: 10px;
+  }
+  .carrusel-leyenda{
+    left: 14px; right: 14px; bottom: 14px;
+  }
+  .carrusel-leyenda h4{ font-size: 20px; }
+  .carrusel-leyenda p{ font-size: 14px; }
+
+  .carrusel-control{
+    width: 42px; height: 42px; font-size: 24px;
+  }
+  .carrusel-control.anterior{ left: 6px; }
+  .carrusel-control.siguiente{ right: 6px; }
+
+  .carrusel-puntos{ gap: 8px; padding: 12px 0 2px; }
+  .carrusel-puntos button{ width: 10px; height: 10px; }
+
+  /* Métricas centradas y aireadas */
+  .metricas{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    gap: 10px 18px;
+    padding: 4px 0;
+    justify-items: center;
+    text-align: center;
+  }
+  .metrica-numero{ font-size: 26px; }
+  .metrica-etiqueta{ font-size: 13px; line-height: 1.25; }
+}
+
+/* --- Móviles pequeños extra --- */
+@media (max-width: 420px){
+  .titulo-seccion{ font-size: 28px; }
+  .texto-por-que h3{ font-size: 20px; }
+  .carrusel-imagen{ max-height: 220px; }
+  .carrusel-leyenda h4{ font-size: 18px; }
+  .carrusel-leyenda p{ font-size: 13px; }
+  .metrica-numero{ font-size: 24px; }
+  .metrica-etiqueta{ font-size: 12px; }
+}
+
+
+/* ====== Responsive para contenedor-sector ====== */
+.contenedor-sector {
+  position: relative;
+  width: 100%;
+  height: 450px; /* escritorio */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.253), rgba(0, 0, 0, 0.24)), 
+                    url("/static/image/imagen_index.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.titulo-sector {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  -webkit-text-stroke: 1px #4fa817;
+}
+
+.subtitulo-sector {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ===== Responsive ajustes ===== */
+@media (max-width: 968px) {
+  .contenedor-sector {
+    height: 320px; 
+    padding: 0 12px;
+  }
+  .titulo-sector {
+    font-size: 28px;
+  }
+  .subtitulo-sector {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor-sector {
+    height: 260px;
+    padding: 0 10px;
+  }
+  .titulo-sector {
+    font-size: 22px;
+  }
+  .subtitulo-sector {
+    font-size: 14px;
+  }
+}

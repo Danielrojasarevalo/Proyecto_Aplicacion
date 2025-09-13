@@ -52,76 +52,70 @@ body, html {
     font-size: 18px;
     font-weight: bold;
 
-}
-/* Contenedor principal de "Nosotros" */
-.contenedor-nuestra-historia {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    padding: 0;
-    text-align: center;
+}/* ===== NOSOTROS (Hero + Timeline) ===== */
+.nosotros{
+  max-width: 1120px; margin: 0 auto; padding: 28px 20px 40px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #243E1E;
 }
 
-/* Contenedor de la imagen y el texto en flexbox */
-.nuestra-historia-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1000px; /* Limitar el ancho máximo del contenedor */
-    margin-top: 40px;
+/* Hero dividido */
+.nosotros-hero{
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: 22px;
+  align-items: center; background: #ffffff; border:1px solid #E5ECE6;
+  border-radius: 18px; padding: 16px; box-shadow: 0 12px 26px rgba(0,0,0,.06);
 }
 
-/* Estilo para la imagen */
-.nuestra-historia-imagen {
-    width: 70%; /* La imagen ocupará el 60% del contenedor */
-    margin-right: 20px;
+.nosotros-imagen img{
+  width: 100%; height: 360px; object-fit: cover; border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
 }
 
-.nuestra-historia-imagen img {
-    width: 100%;
-    height: auto; /* Ajusta la altura de la imagen proporcionalmente */
-    object-fit: cover; /* Asegura que la imagen no se deforme */
-    border-radius: 10px; /* Redondea las esquinas de la imagen */
+.nosotros-texto .nosotros-badge{
+  display:inline-block; background:#E7F4E9; color:#1F7A35; font-weight:800;
+  padding:6px 10px; border-radius:12px; font-size:12px; letter-spacing:.3px;
+  margin-bottom:10px;
 }
 
-/* Estilo para el bloque de texto */
-.texto-seccion {
-    width: 65%; /* El texto ocupa el 35% del contenedor */
-    color: #333;
-}
+.nosotros-titulo{ font-size: 34px; margin: 0 0 8px; font-weight: 800; }
+.nosotros-parrafo{ margin: 10px 0; color:#3e4a3e; line-height:1.55; }
 
-.texto-seccion h2 {
-    font-size: 30px;
-    font-weight: bold;
-    color: #1f531f;
-    margin-bottom: 20px;
+.nosotros-datos{
+  display:flex; gap:18px; margin:12px 0 8px; flex-wrap: wrap;
 }
+.dato{
+  background:#F6F8F6; border:1px solid #E5ECE6; border-radius:12px;
+  padding:10px 12px; min-width: 140px; text-align:center;
+}
+.dato-numero{ font-weight:800; font-size:18px; color:#1F7A35; line-height:1; }
+.dato-etiqueta{ font-size:12px; color:#556255; margin-top:4px; }
 
-.texto-seccion p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #333;
+/* Timeline */
+.nosotros-timeline{
+  position: relative; margin: 26px 6px 0; padding-left: 22px;
 }
+.nosotros-timeline::before{
+  content:""; position:absolute; left:22px; top:0; bottom:0; width:3px;
+  background: linear-gradient(#CFE6D2, #A8D4B1);
+  border-radius: 3px;
+}
+.timeline-item{
+  position: relative; display: grid; grid-template-columns: 56px 1fr;
+  gap: 12px; margin: 16px 0; align-items: start;
+}
+.timeline-icon{
+  width:44px; height:44px; border-radius:50%; background:#EAF5EA;
+  display:grid; place-items:center; font-size:20px; color:#1F7A35;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+}
+.timeline-content{
+  background:#FFFFFF; border:1px solid #E5ECE6; border-radius:12px;
+  padding:12px 14px; box-shadow: 0 8px 20px rgba(0,0,0,.04);
+}
+.timeline-content h3{ margin:0 0 4px; font-size:18px; font-weight:800; color:#2b3c2b; }
+.timeline-content p{ margin:0; color:#485648; line-height:1.55; }
 
-/* Estilo para el texto adicional debajo de la imagen */
-.texto-adicional {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 900px;
-    text-align: center;
-    padding: 0 20px;
-}
 
-.texto-adicional p {
-    font-size: 18px;
-    color: #333;
-    line-height: 1.6;
-}
-.texto-adicional .p {
-    color: #4CAF50;
-}
 
 
 /*-------------------------------------------------------- */

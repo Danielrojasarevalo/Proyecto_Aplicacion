@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="es" class="loading">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/responsive_index.css' %}">
-    <title>Página de Inicio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive_index.css' %}">
+  <title>Página de Inicio</title>
 </head>
 <body class="fade-in" style="opacity: 0; transition: opacity 0.6s ease;">
 
@@ -42,85 +42,162 @@
 
 </div>
 
-<!-- Contenedor principal de "Nuestros Servicios" -->
-<div class="contenedor-servicios">
-    <br>
-    <br>
-    <h2 class="titulo-servicios">Nuestros Servicios</h2>
+<section class="seccion-contenido">
+  <h2 class="titulo-seccion">Nuestros Servicios</h2>
 
-    <!-- Primer bloque con la imagen a la izquierda y el texto a la derecha -->
-    <div class="bloque-servicio scroll-animado">
-        <div class="servicio-item">
-            <img src="/static/image/fondo_servicios1.png" alt="Servicio 1">
-            
+  <!-- 3 tarjetas -->
+  <div class="tarjetas-3">
+    <article class="tarjeta">
+      <div class="icono-tarjeta">📊</div>
+      <h3 class="titulo-tarjeta">Medición de pH</h3>
+      <p class="texto-tarjeta">Medimos y controlamos los niveles de pH del suelo en tus cultivos.</p>
+    </article>
+
+    <article class="tarjeta">
+      <div class="icono-tarjeta">🌱</div>
+      <h3 class="titulo-tarjeta">Recomendaciones</h3>
+      <p class="texto-tarjeta">Guías para ajustar el pH del suelo según los resultados.</p>
+    </article>
+
+    <article class="tarjeta">
+      <div class="icono-tarjeta">♻️</div>
+      <h3 class="titulo-tarjeta">Optimización</h3>
+      <p class="texto-tarjeta">Contribuimos a cosechas saludables y eficientes.</p>
+    </article>
+  </div>
+
+  <!-- ¿Por qué el café? -->
+  <div class="fila-por-que">
+    <img class="imagen-por-que" src="{% static 'image/fondo_porque_cafe.png' %}" alt="Rama de café">
+    <div class="texto-por-que">
+      <h3>¿Por qué el café?</h3>
+      <p>El café no solo es una de las bebidas más consumidas del mundo, también es el motor económico de miles de familias caficultoras...</p>
+    </div>
+  </div>
+
+  <!-- ¿Por qué elegirnos? -->
+  <div class="por-que-elegirnos">
+    <h3>¿Por qué elegirnos?</h3>
+
+    <div class="cuadricula-ventajas">
+      <div class="item-ventaja">
+        <span class="icono-ventaja">🇨🇴</span>
+        <div>
+          <h4>Empresa colombiana</h4>
+          <p>Líder en desarrollo de soluciones para manejo del pH del suelo.</p>
         </div>
-        <div class="servicio-item">
-            <p>Nos enfocamos en medir y controlar el pH del suelo en la industria agroindustrial cafetera, ya que este factor es esencial para garantizar una mejor calidad y rendimiento en la producción de café. Mantener un pH adecuado en el suelo permite que las plantas absorban los nutrientes de manera más eficiente, lo que se traduce en una cosecha de café más saludable y sabrosa. Con el apoyo de tecnología avanzada en lectores de pH del suelo, buscamos optimizar el proceso de cultivo y contribuir a la producción de un café de alta calidad.</p>
-            
+      </div>
+
+      <div class="item-ventaja">
+        <span class="icono-ventaja">👩‍🔬</span>
+        <div>
+          <h4>Equipo profesional</h4>
+          <p>Asesoramiento técnico y acompañamiento en campo.</p>
         </div>
+      </div>
+
+      <div class="item-ventaja">
+        <span class="icono-ventaja">✅</span>
+        <div>
+          <h4>Mejor calidad</h4>
+          <p>Aseguramos cosechas saludables y eficaces.</p>
+        </div>
+      </div>
+
+      <div class="item-ventaja">
+        <span class="icono-ventaja">🛠️</span>
+        <div>
+          <h4>Tecnologías agrícolas</h4>
+          <p>Equipos eficientes para la medición de pH.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Sección: Temporadas ====== -->
+  <section class="seccion-temporadas">
+    <h2 class="titulo-seccion-secundario">Temporadas</h2>
+    <p class="subtitulo-seccion">
+      El café pasa por diferentes etapas que determinan su calidad, productividad y sabor único…
+    </p>
+    <button class="boton boton-primario" id="btnAbrirTemporadas">Ver temporadas del café</button>
+  </section>
+
+  <!-- ===== Modal Temporadas ===== -->
+  <div class="modal-temporadas" id="modalTemporadas" aria-hidden="true">
+    <div class="modal-overlay" data-close></div>
+
+    <div class="modal-dialogo" role="dialog" aria-modal="true" aria-labelledby="ttlTemporadas">
+      <header class="modal-encabezado">
+        <h3 id="ttlTemporadas">Temporadas del café</h3>
+        <button class="modal-cerrar" title="Cerrar" aria-label="Cerrar" data-close>&times;</button>
+      </header>
+
+      <section class="modal-cuerpo">
+        <div class="carrusel" id="carruselTemporadas">
+          <button class="carrusel-control anterior" aria-label="Anterior">&#8249;</button>
+
+          <div class="carrusel-pista">
+            <!-- Diapo 1 -->
+            <article class="carrusel-diapo">
+              <img class="carrusel-imagen" src="{% static 'image/Mitaca.png' %}" alt="Mitaca">
+              <div class="carrusel-leyenda">
+                <h4>Mitaca</h4>
+                <p>La Mitaca es una de las principales temporadas de cosecha…</p>
+              </div>
+            </article>
+            <!-- Diapo 2 -->
+            <article class="carrusel-diapo">
+              <img class="carrusel-imagen" src="{% static 'image/Cosecha.png' %}" alt="Cosecha">
+              <div class="carrusel-leyenda">
+                <h4>Cosecha</h4>
+                <p>La Cosecha es la temporada principal del café en Colombia…</p>
+              </div>
+            </article>
+            <!-- Diapo 3 -->
+            <article class="carrusel-diapo">
+              <img class="carrusel-imagen" src="{% static 'image/Recuperación.png' %}" alt="Recuperación">
+              <div class="carrusel-leyenda">
+                <h4>Recuperación</h4>
+                <p>Etapa posterior a la cosecha, la planta repone nutrientes…</p>
+              </div>
+            </article>
+            <!-- Diapo 4 -->
+            <article class="carrusel-diapo">
+              <img class="carrusel-imagen" src="{% static 'image/Florecencia.png' %}" alt="Florecencia">
+              <div class="carrusel-leyenda">
+                <h4>Florecencia</h4>
+                <p>La planta se llena de flores; base de la siguiente producción…</p>
+              </div>
+            </article>
+          </div>
+
+          <button class="carrusel-control siguiente" aria-label="Siguiente">&#8250;</button>
+
+          <div class="carrusel-puntos" aria-label="Indicadores"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ====== Métricas ====== -->
+  <section class="metricas">
+    <div class="metrica">
+      <div class="metrica-numero">50</div>
+      <div class="metrica-etiqueta">Caficultores<br>beneficiados</div>
     </div>
 
-    <!-- Segundo bloque con la imagen a la derecha y el texto a la izquierda -->
-    <div class="bloque-servicio scroll-animado">
-        <div class="servicio-item">
-            <p>Basándonos en los resultados del pH, te proporcionaremos recomendaciones personalizadas para ajustar correctamente los valores del pH del suelo mediante el uso de abonos, tal como lo detecta tu sensor. De esta forma, mejoraremos la calidad de tu tierra, optimizando tanto la producción como la calidad de tu cosecha</p>
-        
-        </div>
-        <div class="servicio-item">
-            <img src="/static/image/fondo_servicio2.png" alt="Servicio 4">
-        
-        </div>
+    <div class="metrica">
+      <div class="metrica-numero">5</div>
+      <div class="metrica-etiqueta">años de<br>experiencia</div>
     </div>
-</div>
 
-<div class="contenedor-servicio scroll-animado">
-    <div class="contenido-servicio">
-        <div class="imagen-servicio">
-            <img src="/static/image/fondo_porque_cafe.png" alt="Café" />
-        </div>
-        <div class="texto-servicio">
-            <h2 class="titulo-servicio">¿Por qué el café?</h2>
-            <p>El café es clave para la economía mundial y, especialmente, para Colombia, donde es vital para el empleo y el desarrollo de miles de familias caficultoras. Además de su valor económico, el café ofrece beneficios para la salud, como propiedades antioxidantes y mejora en la concentración.</p>
-            <p>Para garantizar una producción de café sostenible y de calidad, es esencial optimizar las condiciones del suelo. El control del pH del suelo juega un papel crucial, ya que un pH adecuado mejora la absorción de nutrientes y resulta en una cosecha más saludable.</p>
-        </div>
+    <div class="metrica">
+      <div class="metrica-numero">+1000</div>
+      <div class="metrica-etiqueta">análisis de pH</div>
     </div>
-</div>
-
-<!-- Contenedor de "Por Qué Elegirnos" -->
-<div class="contenedor-por-que-elegirnos scroll-animado">
-    <div class="contenido-servicio">
-        <div class="texto-servicio">
-            <br>
-            <br>
-            <h2 class="titulo-por-que-elegirnos">¿Por qué Elegirnos?</h2>
-            <p>Somos una empresa colombiana, líder en el desarrollo e implementación de tecnologías para la optimización del cultivo de café a través de la medición y control del pH del suelo.</p>
-            <div class="beneficios">
-                <div class="beneficio">
-                    <h3><img src="/static/image/icono1.png"alt="Innovamos" class="img-icono"> Innovamos</h3>
-                    <p>Soluciones tecnológicas para la medición del pH del suelo.</p>
-                </div>
-                <div class="beneficio">
-                    <h3><img src="/static/image/icono3.png" alt="Equipo profesional" class="img-icono"> Equipo profesional</h3>
-                    <p>Contamos con equipo capacitado para brindarte las mejores recomendaciones y asesoramiento técnico en el manejo del pH del suelo.</p>
-                </div>
-                <div class="beneficio">
-                    <h3><img src="/static/image/icono4.png" alt="Tecnologías agrícolas" class="img-icono"> Tecnologías agrícolas</h3>
-                    <p>Utilizamos equipos tecnológicos agrícolas para medir el pH del suelo.</p>
-                </div>
-                <div class="beneficio">
-                    <h3><img src="/static/image/icono2.png" alt="Innovamos" class="img-icono"> Mejor calidad</h3>
-                    <p>Buscamos siempre mejorar las soluciones tecnológicas y adaptarlas a las necesidades del mercado.</p>
-                </div>
-            </div>
-        </div>
-        <div class="imagen-servicio">
-            <img src="/static/image/cafe.png" alt="Café">
-        </div>
-    </div>
-</div>
-
-
-
+  </section>
+</section>
 
 <!-- Container con todos los elementos en la parte inferior -->
 <div class="footer-container">
@@ -263,7 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wrapper) observer.observe(wrapper);
   });
 </script>
-
  <script src="{% static 'javascript/responsive mobil.js' %}"></script>
 
 
