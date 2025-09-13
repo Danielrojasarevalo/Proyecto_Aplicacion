@@ -6,16 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugerencias</title>
     <link rel="stylesheet" href="{% static 'css/recomendaciones.css' %}">
-     <link rel="stylesheet" href="{% static 'css/responsive recomendaciones.css' %}">
 </head>
 <body>
-
-    <header class="header-movil">
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <h1 class="titulo-movil">Datos Sensores</h1>
-    <img src="{% static 'image/logo_empresa.png' %}" alt="Logo" class="logo-movil">
-  </header>
-
     <nav class="barra-navegacion-superior">
         <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo" />
         <ul class="enlaces-nav">
@@ -24,15 +16,6 @@
             <li><a href="{% url 'recomendaciones' %}?id={{ request.GET.id }}" class="{% if request.path == '/index/login/recomendaciones/' %}activo{% endif %}">Sugerencias</a></li>
         </ul>
     </nav>
-
-      <!-- Menú desplegable móvil -->
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="{% url 'historial' %}?id={{ request.GET.id }}">Historial</a>
-        <a href="{% url 'datos' %}?id={{ request.GET.id }}">Datos</a>
-        <a href="{% url 'recomendaciones' %}?id={{ request.GET.id }}">Sugerencias</a>
-        <a href="{% url 'login' %}" class="btn-cerrar">Cerrar sesión</a>
-    </div>
-    
 
 <div class="main-content-wrapper">
     <div class="contenedores">
@@ -116,6 +99,19 @@
         </table>
     </div>
     {% endif %}
+
+    {# Mostrar imágenes del abono recomendado debajo del texto de recomendaciones #}
+    {% if abono_imagenes %}
+    <div class="abono-imagenes-container">
+        <h3>Imágenes del abono recomendado</h3>
+        {% for imagen in abono_imagenes %}
+            <div class="abono-imagen-item">
+                <img src="{{ imagen.imagen.url }}" alt="Imagen de abono" style="max-width:300px; margin-bottom:10px;">
+                {% if imagen.titulo %}<div>{{ imagen.titulo }}</div>{% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
 
 <div class="footer-container">
@@ -128,32 +124,32 @@
             <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook" class="redes-icono"></a>
             <a href="#"><img src="{% static 'image/x.png' %}" alt="Twitter" class="redes-icono"></a>
             <a href="#"><img src="{% static 'image/instagram.png' %}" alt="Instagram" class="redes-icono"></a>
-           
+            <a href="#"><img src="{% static 'image/in.png' %}" alt="LinkedIn" class="redes-icono"></a>
         </div>
     </div>
     <hr>
     <div class="informacion-footer">
-        <div class="acordeon-item">
-            <h3 class="acordeon-header">Información <span class="icono-acordeon">+</span></h3>
-            <ul class="acordeon-content">
-                <li><a href="">Políticas y privacidad</a></li>
-                <li><a href="">Términos y condiciones</a></li>
-                <li><a href="">Testimonios de clientes</a></li>
+        <div class="informacion">
+            <h3>Información</h3>
+            <ul>
+                <li>Políticas y privacidad</li>
+                <li>Términos y condiciones</li>
+                <li>Testimonios de clientes</li>
             </ul>
         </div>
-        <div class="acordeon-item">
-            <h3 class="acordeon-header">Recursos <span class="icono-acordeon">+</span></h3>
-            <ul class="acordeon-content">
-                <li><a href="">Guía de uso para el pH del suelo</a></li>
-                <li><a href="">Guía de interpretación del suelo</a></li>
-                <li><a href="">Blog / Artículos educativos sobre el suelo y pH</a></li>
+        <div class="recursos">
+            <h3>Recursos</h3>
+            <ul>
+                <li>Guía de uso para el pH del suelo</li>
+                <li>Guía de interpretación del suelo</li>
+                <li>Blog / Artículos educativos sobre el suelo y pH</li>
             </ul>
         </div>
-        <div class="acordeon-item">
-            <h3 class="acordeon-header">Soporte <span class="icono-acordeon">+</span></h3>
-            <ul class="acordeon-content">
-                <li><a href="">Soporte Técnico / FAQ</a></li>
-                <li><a href="">Newsletter / Suscripción a Actualizaciones</a></li>
+        <div class="soporte">
+            <h3>Soporte</h3>
+            <ul>
+                <li>Soporte Técnico / FAQ</li>
+                <li>Newsletter / Suscripción a Actualizaciones</li>
             </ul>
         </div>
     </div>
@@ -166,11 +162,9 @@
         </div>
     </footer>
 </div>
-</div>
 <div class="cerrar-sesion">
     <a href="{% url 'login' %}">Cerrar sesión</a>
 </div>
 <script src="{% static 'javascript/sugerencia.js' %}"></script>
-<script src="{% static 'javascript/responsive mobil.js' %}"></script>
 </body>
 </html>

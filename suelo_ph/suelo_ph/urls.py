@@ -31,7 +31,10 @@ urlpatterns = [
     path('index/login/', include('login.urls')),  # Incluye las URLs de la app 'login'
     path('index/login/', include('tablas.urls')), 
     path('historial_datos_api/', tablas_views.historial_datos_api, name='historial_datos_api'),  # Esto permite que /historial_datos_api/?id=... funcione
+    path("api/", include("tablas.urls")),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
