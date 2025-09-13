@@ -7,7 +7,6 @@ router = DefaultRouter()
 router.register(r"tipo-abonos", TipoAbonoViewSet, basename="tipoabono")
 
 urlpatterns = router.urls + [
-    path('login/', views.login_view, name='login'),
     path('login/historial/', views.historial_view, name='historial'),
     path('login/datos/', views.datos_view, name='datos'),
     path('login/recomendaciones/', views.recomendaciones_view, name='recomendaciones'),
@@ -18,4 +17,5 @@ urlpatterns = router.urls + [
     path('resultados_json/', views.resultados_json, name='resultados_json'),
 
     path('resultados/', views.resultados_view, name='resultados'),
+    path('buscar_fecha/', views.buscar_datos_por_fecha, name='buscar_fecha'),
 ]

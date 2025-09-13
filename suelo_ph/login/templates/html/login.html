@@ -69,7 +69,7 @@
             {% endif %}
 
             <!-- Formulario de login -->
-            <form class="formulario-login" action="{% url 'login' %}" method="post">
+            <form class="formulario-login" action="{% url 'login' %}" method="post" autocomplete="off">
                 {% csrf_token %}
                 <div class="grupo-entrada">
                     <input type="email" name="email" placeholder="Email" required>
@@ -143,10 +143,16 @@
 
 
 <script>
-  var abrir_modal_fincas_str = "{{ abrir_modal_fincas }}";
+    var abrir_modal_fincas_str = "{{ abrir_modal_fincas }}";
+    document.addEventListener('DOMContentLoaded', function() {
+        if (abrir_modal_fincas_str === 'True' || abrir_modal_fincas_str === 'true') {
+            // Mostrar el modal de selección de finca
+            showModal(document.getElementById('login-modal'));
+        }
+    });
 </script>
 <script src="{% static 'javascript/login.js' %}"></script>
- <script src="{% static 'javascript/responsive mobil.js' %}"></script>
+<script src="{% static 'javascript/responsive mobil.js' %}"></script>
 
 
 

@@ -339,13 +339,11 @@ def buscar_datos_por_fecha(request):
         finca = get_object_or_404(Fincas, id=finca_id, usuario=auth_user)
         arduinos = Arduinos.objects.filter(finca=finca)
 
-        fecha_obj = datetime.strptime(fecha, '%Y-%m-%d')
-        fecha_fin = fecha_obj + timedelta(days=1)
 
+        fecha_obj = datetime.strptime(fecha, '%Y-%m-%d')
         datos = DatosSuelos.objects.filter(
             arduino__in=arduinos,
-            fecha__gte=fecha_obj,
-            fecha__lt=fecha_fin
+            fecha__date=fecha_obj.date()
         ).values('humedad', 'temperatura', 'ph', 'fecha', 'arduino__nombre')
 
         return JsonResponse({'resultados': list(datos)}, status=200)

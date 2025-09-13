@@ -64,12 +64,40 @@ document.addEventListener('DOMContentLoaded', function() {
             const responseData = await response.json();
 
             if (responseData.status === 'ok') {
-                // Redirige a la URL correcta con todos los parámetros necesarios
+                // Redirigir a la página de resultados con los parámetros
                 window.location.href = `/index/login/resultados/?fecha_desde=${fechaDesde}&fecha_hasta=${fechaHasta}&temporada=${temporadaSeleccionada}&finca_id=${fincaId}`;
             } else {
                 errorMessageDiv.textContent = responseData.message;
                 errorMessageDiv.style.display = 'block';
             }
+// Función para mostrar el modal con los resultados
+function mostrarModalResultados(data) {
+    let modal = document.getElementById('modalResultados');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'modalResultados';
+        modal.className = 'modal';
+        document.body.appendChild(modal);
+    }
+    modal.innerHTML = `
+        <div class="modal-contenido">
+            <span class="cerrar-modal" style="cursor:pointer;float:right;font-size:2em;">&times;</span>
+            <h2 style="text-align:center;">Resultados de Sugerencias</h2>
+            <div>
+                <strong>Abonos recomendados:</strong>
+                <ul>
+                    ${(data.abonos_info || []).map(abono => `<li><strong>${abono.nombre}</strong><br>${abono.descripcion || ''}<br>${(abono.imagenes && abono.imagenes.length > 0) ? abono.imagenes.map(img => `<img src='${img.imagen}' style='max-width:150px;margin:5px;'>`).join('') : ''}</li>`).join('')}
+                </ul>
+            </div>
+        </div>
+    `;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.cerrar-modal').onclick = function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    };
+}
         } catch (error) {
             console.error('Error en la comunicación:', error);
             errorMessageDiv.textContent = 'Ocurrió un error en la comunicación con el servidor. Por favor, inténtelo de nuevo.';
