@@ -7,8 +7,7 @@
     <title>Historial</title>
     <link rel="stylesheet" href="{% static 'css/historial.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive historial.css' %}">
-
-        
+    <link rel="stylesheet" href="{% static 'css/responsive contactanos.css' %}">
 </head>
 <body>
     {% csrf_token %}
@@ -100,8 +99,8 @@
         </div>
     </div>
 
-    <!-- Footer -->
-   
+  <!-- Container con todos los elementos en la parte inferior -->
+<div class="footer-container">
     <div class="footer-content">
         <div class="logo-nombre">
             <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo">
@@ -119,24 +118,24 @@
         <div class="acordeon-item">
             <h3 class="acordeon-header">Información <span class="icono-acordeon">+</span></h3>
             <ul class="acordeon-content">
-                <li><a href="#">Políticas y privacidad</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-                <li><a href="#">Testimonios de clientes</a></li>
+                <li><a href="">Políticas y privacidad</a></li>
+                <li><a href="">Términos y condiciones</a></li>
+                <li><a href="">Testimonios de clientes</a></li>
             </ul>
         </div>
         <div class="acordeon-item">
             <h3 class="acordeon-header">Recursos <span class="icono-acordeon">+</span></h3>
             <ul class="acordeon-content">
-                <li><a href="#">Guía de uso para el pH del suelo</a></li>
-                <li><a href="#">Guía de interpretación del suelo</a></li>
-                <li><a href="#">Blog / Artículos educativos sobre el suelo y pH</a></li>
+                <li><a href="">Guía de uso para el pH del suelo</a></li>
+                <li><a href="">Guía de interpretación del suelo</a></li>
+                <li><a href="">Blog / Artículos educativos sobre el suelo y pH</a></li>
             </ul>
         </div>
         <div class="acordeon-item">
             <h3 class="acordeon-header">Soporte <span class="icono-acordeon">+</span></h3>
             <ul class="acordeon-content">
-                <li><a href="#">Soporte Técnico / FAQ</a></li>
-                <li><a href="#">Newsletter / Suscripción a Actualizaciones</a></li>
+                <li><a href="">Soporte Técnico / FAQ</a></li>
+                <li><a href="">Newsletter / Suscripción a Actualizaciones</a></li>
             </ul>
         </div>
     </div>
@@ -147,8 +146,8 @@
         <div class="footer-right">
             <p>&copy; Políticas de privacidad -<br> términos Y Condiciones</p>
         </div>
-        </footer>
-    </div>
+    </footer>
+</div>
 
     <!-- Botón flotante cerrar sesión (solo escritorio) -->
     <div class="cerrar-sesion">

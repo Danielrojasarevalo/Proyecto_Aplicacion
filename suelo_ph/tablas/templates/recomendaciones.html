@@ -6,8 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugerencias</title>
     <link rel="stylesheet" href="{% static 'css/recomendaciones.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive recomendaciones.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive contactanos.css' %}">
 </head>
 <body>
+
+        {% csrf_token %}
+
+  <header class="header-movil">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <h1 class="titulo-movil">Datos Sensores</h1>
+    <img src="{% static 'image/logo_empresa.png' %}" alt="Logo" class="logo-movil">
+  </header>
+
+
+
+    <!-- Menú desplegable móvil -->
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="{% url 'historial' %}?id={{ request.GET.id }}">Historial</a>
+        <a href="{% url 'datos' %}?id={{ request.GET.id }}">Datos</a>
+        <a href="{% url 'recomendaciones' %}?id={{ request.GET.id }}">Sugerencias</a>
+        <a href="{% url 'login' %}" class="btn-cerrar">Cerrar sesión</a>
+    </div>
     <nav class="barra-navegacion-superior">
         <img src="{% static 'image/logo_empresa.png' %}" alt="Logo de la Empresa" class="logo" />
         <ul class="enlaces-nav">
@@ -114,6 +134,7 @@
     {% endif %}
 </div>
 
+<!-- Container con todos los elementos en la parte inferior -->
 <div class="footer-container">
     <div class="footer-content">
         <div class="logo-nombre">
@@ -124,32 +145,32 @@
             <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook" class="redes-icono"></a>
             <a href="#"><img src="{% static 'image/x.png' %}" alt="Twitter" class="redes-icono"></a>
             <a href="#"><img src="{% static 'image/instagram.png' %}" alt="Instagram" class="redes-icono"></a>
-            <a href="#"><img src="{% static 'image/in.png' %}" alt="LinkedIn" class="redes-icono"></a>
+           
         </div>
     </div>
     <hr>
     <div class="informacion-footer">
-        <div class="informacion">
-            <h3>Información</h3>
-            <ul>
-                <li>Políticas y privacidad</li>
-                <li>Términos y condiciones</li>
-                <li>Testimonios de clientes</li>
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Información <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="">Políticas y privacidad</a></li>
+                <li><a href="">Términos y condiciones</a></li>
+                <li><a href="">Testimonios de clientes</a></li>
             </ul>
         </div>
-        <div class="recursos">
-            <h3>Recursos</h3>
-            <ul>
-                <li>Guía de uso para el pH del suelo</li>
-                <li>Guía de interpretación del suelo</li>
-                <li>Blog / Artículos educativos sobre el suelo y pH</li>
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Recursos <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="">Guía de uso para el pH del suelo</a></li>
+                <li><a href="">Guía de interpretación del suelo</a></li>
+                <li><a href="">Blog / Artículos educativos sobre el suelo y pH</a></li>
             </ul>
         </div>
-        <div class="soporte">
-            <h3>Soporte</h3>
-            <ul>
-                <li>Soporte Técnico / FAQ</li>
-                <li>Newsletter / Suscripción a Actualizaciones</li>
+        <div class="acordeon-item">
+            <h3 class="acordeon-header">Soporte <span class="icono-acordeon">+</span></h3>
+            <ul class="acordeon-content">
+                <li><a href="">Soporte Técnico / FAQ</a></li>
+                <li><a href="">Newsletter / Suscripción a Actualizaciones</a></li>
             </ul>
         </div>
     </div>
@@ -162,9 +183,12 @@
         </div>
     </footer>
 </div>
+
 <div class="cerrar-sesion">
     <a href="{% url 'login' %}">Cerrar sesión</a>
 </div>
 <script src="{% static 'javascript/sugerencia.js' %}"></script>
+<script src="{% static 'javascript/responsive mobil.js' %}"></script>
+<script src="{% static 'javascript/barra_d_busqueda.js' %}"></script>
 </body>
 </html>
