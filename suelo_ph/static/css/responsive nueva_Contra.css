@@ -149,6 +149,23 @@ body {
         padding: 20px;
     }
 
+    /* Forzar scroll vertical en la parte derecha cuando el contenido exceda la pantalla */
+    .container {
+        max-height: 100vh; /* limitar al alto de la pantalla */
+    }
+
+    .right-side {
+        /* dejar espacio para la parte superior (ajustable) */
+        max-height: calc(100vh - 220px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* momentum scroll en iOS */
+    }
+
+    /* Asegurar que el cuadro de reset no desborde su contenedor */
+    .reset-section {
+        max-height: 100%;
+    }
+
     /* Cuadro solo en móvil */
     .reset-section {
         background: #fff;

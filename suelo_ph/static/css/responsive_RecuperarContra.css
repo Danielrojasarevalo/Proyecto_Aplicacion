@@ -1,0 +1,76 @@
+/* Responsive para recuperar_contraseña: apilar columnas y permitir scroll en móvil */
+@media (max-width: 768px) {
+	/* Contenedor principal: apilar columnas */
+	.container {
+		display: flex;
+		flex-direction: column;
+		width: 95%;
+		max-width: 680px;
+		margin: 0 auto;
+		height: 100vh;
+		overflow: hidden;
+		border-radius: 10px;
+	}
+
+	/* Parte izquierda: reducir altura y centrar contenido */
+	.left-side {
+		padding: 18px;
+		text-align: center;
+		flex: 0 0 auto;
+	}
+
+	.left-side .welcome-content h1 {
+		font-size: 28px;
+	}
+
+	.left-side ul {
+		display: block;
+		padding-left: 0;
+		margin-top: 10px;
+	}
+
+	.left-side li::before {
+		left: 10px; /* ajustar posición del icono ✓ */
+	}
+
+	/* Parte derecha: ocupar el resto y permitir scroll interno */
+	.right-side {
+		padding: 16px;
+		flex: 1 1 auto;
+		max-height: calc(100vh - 140px); /* dejar espacio para la parte superior */
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		background: #ffffff;
+	}
+
+	/* Ajustes del formulario para que no se desborde */
+	.recovery-section, .reset-section {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.instructions {
+		font-size: 13px;
+		line-height: 1.4;
+	}
+
+	.send-btn, .confirm-btn {
+		width: 100%;
+		padding: 12px 14px;
+		font-size: 16px;
+	}
+
+	/* Evitar que el contenido se pegue a los bordes en móviles */
+	body {
+		padding: 10px 0;
+		background: transparent;
+	}
+}
+
+/* Extra small tweaks para pantallas muy pequeñas */
+@media (max-width: 420px) {
+	.left-side h1 { font-size: 22px; }
+	.left-side h3 { font-size: 16px; }
+	.instructions { font-size: 12px; }
+}
+
