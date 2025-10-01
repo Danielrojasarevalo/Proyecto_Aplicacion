@@ -328,6 +328,7 @@ footer {
 }
 
 /* Estilo para el botón de cerrar sesión */
+/* Estilo para el botón de cerrar sesión */
 .cerrar-sesion a {
     position: fixed;
     bottom: 30px;
@@ -335,8 +336,7 @@ footer {
     background-color:#c70505;
     color: #ddd;
     padding: 12px 20px;
-    border: none;
-    border-radius: 50px;
+    border-radius: 70px;
     font-size: 16px;
     cursor: pointer;
     z-index:999;
@@ -344,7 +344,7 @@ footer {
 }
 
 .cerrar-sesion a:hover {
-    background-color: #ec0000;
+    background-color: #ff0000;
     transform: scale(0.97);
 
 }

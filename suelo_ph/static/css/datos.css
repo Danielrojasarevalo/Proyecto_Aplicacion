@@ -243,6 +243,8 @@ footer {
     margin-right: 370px;
 }
 
+
+
 /* Estilo para el botón de cerrar sesión */
 .cerrar-sesion a {
     position: fixed;
@@ -251,20 +253,64 @@ footer {
     background-color:#c70505;
     color: #ddd;
     padding: 12px 20px;
-    border: none;
-    border-radius: 50px;
+    border-radius: 70px;
     font-size: 16px;
     cursor: pointer;
     z-index:999;
     transition: background-color 0.3s ease, transform 0.1s ease;
+    text-decoration: none;
 }
 
 .cerrar-sesion a:hover {
-    background-color: #ec0000;
+    background-color: #ff0000;
     transform: scale(0.97);
 
 }
 .cerrar-sesion a:activate{ 
     background-color: #961f1f; 
     transform: scale(0.97);
+}
+
+.btn-download-pdf{
+  /* icono como fondo (ruta relativa desde css/ hacia image/) */
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  background-size: 16px 16px;
+  padding-left: 42px; /* dejar espacio para el icono */
+  background-color: #e80b0b;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: background-color 120ms ease, transform 80ms ease;
+}
+
+.btn-download-pdf:hover{
+  background-color: #ff4d4d;
+  transform: translateY(-1px);
+}
+
+.btn-download-pdf:active{
+  background-color: #c00000;
+  transform: translateY(0);
+}
+
+/* si existe un svg inline dentro del botón, reducir su margen para no duplicar iconos */
+.icono-pdf {   width: 40px;   /* ancho pequeño */
+  height: 40px;  /* alto pequeño */
+  vertical-align: middle; /* lo centra con el texto */
+  margin-right: 8px;  
+ }
+
+ .tabla-actions-bottom{
+  display: flex;
+  justify-content: center; /* centrar el botón por defecto */
+  width: 90%;
+  max-width: 1000px;
+  margin: 12px 0 30px 0;
 }

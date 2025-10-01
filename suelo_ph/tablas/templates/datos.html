@@ -42,6 +42,13 @@
         Esta información es clave para el análisis y monitoreo de las condiciones ambientales del cultivo.
     </center></h4>
 
+    <div class="tabla-actions-bottom" style="width:90%; max-width:1000px; margin:10px 0;">
+            <button id="download-pdf-btn" class="btn-download-pdf" title="Descargar PDF">
+                <img class="icono-pdf" src="{% static 'image/pdf.png' %}" alt="">
+                Descargar PDF
+            </button>
+        </div>
+
     <div class="tabla-wrapper">
         <table>
             <thead>
@@ -58,6 +65,7 @@
         </table>
     </div>
 </div>
+        
 
 <div class="cerrar-sesion">
     <a href="{% url 'login' %}">Cerrar sesión</a>
@@ -72,6 +80,9 @@
 </script>
 <script src="{% static 'javascript/datos.js' %}"></script>
  <script src="{% static 'javascript/responsive mobil.js' %}"></script>
-
+        <!-- jsPDF y autoTable (CDN) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <script src="{% static 'javascript/datos_pdf.js' %}"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/historial.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive historial.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive contactanos.css' %}">
-</head>
+
 <body>
     {% csrf_token %}
 
@@ -78,7 +78,16 @@
                 </div>
             </div>
         </div>
+    
+        <!-- Botón de descarga movido abajo: la caja superior queda vacía para mantener el espaciado si se necesitara -->
+        <div class="tabla-actions" style="width:90%; max-width:1000px; display:flex; justify-content:center; margin:10px 0;">
+        </div>
         
+
+        <!-- jsPDF y autoTable (CDN) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
         <div class="tabla-wrapper">
             <table>
                 <thead>
@@ -97,8 +106,14 @@
                 </tbody>
             </table>
         </div>
+        <!-- Botón Descargar PDF: aparece justo debajo de la tabla y alineado a la derecha -->
+        <div class="tabla-actions-bottom" style="width:90%; max-width:1000px; margin:10px 0;">
+            <button id="download-pdf-btn" class="btn-download-pdf" title="Descargar PDF">
+                <img class="icono-pdf" src="{% static 'image/pdf.png' %}" alt="">
+                Descargar PDF
+            </button>
+        </div>
     </div>
-
   <!-- Container con todos los elementos en la parte inferior -->
 <div class="footer-container">
     <div class="footer-content">

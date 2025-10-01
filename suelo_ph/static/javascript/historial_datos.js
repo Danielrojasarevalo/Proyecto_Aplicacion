@@ -71,4 +71,46 @@ function formatDjangoDate(fecha) {
 window.onload = () => {
     actualizarTabla();
     setInterval(actualizarTabla, 10000);
+  // Inicializar generación de PDF
+  const downloadBtn = document.getElementById('download-pdf-btn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', function() {
+      generarPDF();
+    });
+  }
 };
+
+// Generar PDF de la tabla usando jsPDF y autotable
+function generarPDF() {
+  // Cargar la tabla actual de la página
+  const tabla = document.querySelector('table');
+  if (!tabla) return alert('No se encontró la tabla para exportar.');
+
+  // Recopilar cabeceras
+  const headers = Array.from(tabla.querySelectorAll('thead th')).map(th => th.textContent.trim());
+
+  // Recopilar filas
+  const rows = Array.from(tabla.querySelectorAll('tbody tr')).map(tr => {
+    return Array.from(tr.querySelectorAll('td')).map(td => td.textContent.trim());
+  });
+
+  // Crear doc
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'landscape' });
+
+  // título
+  doc.setFontSize(16);
+  doc.text('Historial de Sensores', 14, 20);
+
+  // autoTable
+  doc.autoTable({
+    startY: 28,
+    head: [headers],
+    body: rows,
+    theme: 'grid',
+    headStyles: { fillColor: [29,145,0], textColor: 255 },
+    styles: { fontSize: 10 }
+  });
+
+  doc.save('historial_sensores.pdf');
+}
