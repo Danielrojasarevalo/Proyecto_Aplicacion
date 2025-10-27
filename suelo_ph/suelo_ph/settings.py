@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#r=2@#eby*qysg$027@oh5_@b)s3t))-#escd=6k@0u(bzb*nl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #cambiarlo en despliegue
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -113,8 +113,6 @@ CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 LOGIN_URL = '/index/login/login/'
 LOGIN_REDIRECT_URL = '/index/login/login/'
 
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', '192.168.1.57', '192.168.1.200']
 
 
 # Password validation

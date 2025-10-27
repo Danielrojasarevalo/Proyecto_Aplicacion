@@ -117,6 +117,7 @@ REGLAS_ABONOS = [
      "nombre":"YaraVera AMIDAS 40-5-35-5.6(s)","fallback":"Calor extremo, más estable que urea"},
     {"condicion": lambda ph,h,t,temporada: t<=11,
      "nombre":"YaraMila HYDROCOMPLEX 12-11-18","fallback":"Frío extremo, balanceado eficiente"}
+     
 ]
 
 
